@@ -63,6 +63,7 @@
 @property (strong, nonatomic) CBPeripheral          *discoveredPeripheral;
 @property (strong, nonatomic) NSMutableData         *data;
 @property (weak, nonatomic) IBOutlet UIView *centralView;
+@property (nonatomic) NSString *stringFromData;
 
 // Timer for Shadow
 @property (nonatomic) NSTimer *timer;
@@ -79,6 +80,7 @@
 @property (nonatomic) NSTimer *roundTimer;
 @property (nonatomic) NSTimeInterval roundTimeLeft;
 @property (strong, nonatomic) IBOutlet UILabel *roundTimerLabel;
+@property (nonatomic) BOOL timerIsOn;
 
 @end
 
@@ -101,13 +103,15 @@
     [self drawCircle];
     
     [self setUpDropShadowSideBar];
+    
+    [self setUpAdvertisingTimer];
+    
+    self.timerIsOn = NO;
 
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LazerhawkOverdrive"  ofType:@"mp3"]];
-    
-    
+    NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LazerhawkOverdrive" ofType:@"mp3"]];
     
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
     [self.player play];
@@ -130,17 +134,17 @@
                                                      userInfo:nil
                                                       repeats:YES];
     self.roundTimeLeft = 60;
-    self.roundTimeLeft--;
-    
-    self.roundTimerLabel.text = [NSString stringWithFormat:@":%f",self.roundTimeLeft];
     
     //[self.roundTimer fire];
 }
 
 -(void) countDown:(NSTimer *)timer {
-    if (--self.roundTimeLeft == 0) {
-        [self.roundTimer invalidate];
-    }
+    self.roundTimeLeft--;
+    self.roundTimerLabel.text = [NSString stringWithFormat:@":%.2f",self.roundTimeLeft];
+
+    if (self.roundTimeLeft == 0) {
+            [self.roundTimer invalidate];
+        }
 }
 
 #pragma mark
@@ -223,19 +227,19 @@
 - (void)scan
 {
     [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]]
-                                                options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
+                                                options:@{ CBCentralManagerScanOptionAllowDuplicatesKey:@YES }];
     
     NSLog(@"Scanning started");
 }
 - (void)setUpAdvertisingTimer{
     
-    self.scanTimer = [NSTimer timerWithTimeInterval:0.1f
+    self.scanTimer = [NSTimer timerWithTimeInterval:0.1
                                                    target:self
                                                  selector:@selector(fireScanner:)
                                                  userInfo:nil
                                                   repeats:YES];
     
-    [self.scanTimer fire];
+    //[self.scanTimer fire];
     
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];  
     [runLoop addTimer:self.scanTimer forMode:NSDefaultRunLoopMode];
@@ -244,8 +248,12 @@
 - (void)fireScanner:(NSTimer *)timer{
     [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]]
                                                 options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
+    
     NSLog(@"Scanning!");
 }
+
+
+
 
 
 /** This callback comes whenever a peripheral that is advertising the TRANSFER_SERVICE_UUID is discovered.
@@ -276,9 +284,6 @@
         [self.centralManager connectPeripheral:peripheral options:nil];
     }
     
-    if (self.roundTimeLeft == 60){
-        [self.roundTimer fire];
-    }
 }
 
 
@@ -295,6 +300,11 @@
  */
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
+    if (self.timerIsOn == NO){
+        [self startGameTimer];
+        self.timerIsOn = YES;
+    }
+    
     NSLog(@"Peripheral Connected");
     
     // Stop scanning
@@ -372,8 +382,9 @@
     // Have we got everything we need?
     if ([stringFromData isEqualToString:@"EOM"]) {
         
-        // We have, so show the data, 
-        [self.textView setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
+        // We have, so show the data,
+        //[self.textView setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
+        //[self.roundTimerLabel setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
         
         // Cancel our subscription to the characteristic
         [peripheral setNotifyValue:NO forCharacteristic:characteristic];

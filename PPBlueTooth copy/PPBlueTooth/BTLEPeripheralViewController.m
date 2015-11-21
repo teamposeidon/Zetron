@@ -100,14 +100,14 @@
     // Setup Drop Shadow Animation
     [self setUpDropShadowSideBar];
     
-    // Setup Advertising Timer
-    [self setUpAdvertisingTimer];
     
-    [self startGameTimer];
+    // Setup Advertising Timer
+    //[self setUpAdvertisingTimer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-        [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] }];
+        [self showVirusAlertController];
+        //[self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -193,12 +193,12 @@
     self.peripheralView.layer.shadowOpacity = opacity;
 }
 
-- (IBAction)turnOnPeripheralTouch:(id)sender {
-    [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] }];
-}
+//- (IBAction)turnOnPeripheralTouch:(id)sender {
+//    [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] }];
+//}
 - (void)setUpAdvertisingTimer{
     
-    self.advertiserTimer = [NSTimer timerWithTimeInterval:0.1f
+    self.advertiserTimer = [NSTimer timerWithTimeInterval:0.01f
                                                    target:self
                                                  selector:@selector(fireAdvertiser:)
                                                  userInfo:nil
@@ -212,7 +212,7 @@
 
 - (void)fireAdvertiser:(NSTimer *)timer{
     [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] }];
-    NSLog(@"Firing!");
+    //NSLog(@"Firing!");
 }
 
 #pragma mark
@@ -248,10 +248,8 @@
     // And add it to the peripheral manager
     [self.peripheralManager addService:transferService];
     
-    [self startGameTimer];
 
 }
-
 
 /** Catch when someone subscribes to our characteristic, then start sending them data
  */
@@ -261,9 +259,10 @@
     
     // Send this data
     NSString *virus = @"Virus";
+    NSString *roundTimeString = [NSString stringWithFormat:@"%f",self.roundTimeLeft];
     
     // Get the data
-    self.dataToSend = [virus dataUsingEncoding:NSUTF8StringEncoding];
+    self.dataToSend = [roundTimeString dataUsingEncoding:NSUTF8StringEncoding];
     
     // Reset the index
     self.sendDataIndex = 0;
@@ -271,7 +270,6 @@
     // Start sending
     [self sendData];
 }
-
 
 /** Recognise when the central unsubscribes
  */
@@ -378,6 +376,33 @@
 {
     // Start sending again
     [self sendData];
+}
+
+#pragma mark
+#pragma mark - Peripheral Virus Alert
+
+- (void)showVirusAlertController{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Are The ZETRON!"
+                                                                             message:@"Command: Infiltrate benign systems"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    // Alert Message - OK Button
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Seek & Infect!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    
+        [self startGameTimer];
+        [self.peripheralManager startAdvertising:@{ CBAdvertisementDataServiceUUIDsKey : @[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]] }];
+        
+    }];
+    
+    // Alert Message - Cancel Button
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        NSLog(@"Cancel");
+    }];
+    
+    [alertController addAction:ok];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 
