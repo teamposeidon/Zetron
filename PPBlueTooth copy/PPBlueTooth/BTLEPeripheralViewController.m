@@ -71,6 +71,11 @@
 // Timer to send data
 @property (nonatomic) NSTimer *advertiserTimer;
 
+// Round Timer
+@property (nonatomic) NSTimer *roundTimer;
+@property (nonatomic) NSTimeInterval roundTimeLeft;
+@property (strong, nonatomic) IBOutlet UILabel *roundTimerLabel;
+
 @end
 
 
@@ -97,6 +102,8 @@
     
     // Setup Advertising Timer
     [self setUpAdvertisingTimer];
+    
+    [self startGameTimer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,6 +117,29 @@
 
     [super viewWillDisappear:animated];
 }
+
+#pragma mark
+#pragma mark - Round Timer Countdown
+-(void)startGameTimer{
+    self.roundTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                       target:self
+                                                     selector:@selector(countDown:)
+                                                     userInfo:nil
+                                                      repeats:YES];
+    self.roundTimeLeft = 60;
+   
+    
+    
+}
+
+-(void) countDown:(NSTimer *)timer {
+    self.roundTimeLeft--;
+    self.roundTimerLabel.text = [NSString stringWithFormat:@":%.2f",self.roundTimeLeft];
+    if (self.roundTimeLeft == 0) {
+        [self.roundTimer invalidate];
+    }
+}
+
 
 #pragma mark
 #pragma mark - Draw Circle
@@ -217,6 +247,9 @@
     
     // And add it to the peripheral manager
     [self.peripheralManager addService:transferService];
+    
+    [self startGameTimer];
+
 }
 
 

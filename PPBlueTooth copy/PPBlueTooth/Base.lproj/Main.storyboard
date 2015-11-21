@@ -15,6 +15,8 @@
             <string>VenusRising-Regular</string>
             <string>VenusRising-Regular</string>
             <string>VenusRising-Regular</string>
+            <string>VenusRising-Regular</string>
+            <string>VenusRising-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -550,6 +552,13 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lx-qP-Law">
+                                <rect key="frame" x="268" y="122" width="65" height="28"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="VenusRising-Regular" family="Venus Rising" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -565,7 +574,9 @@
                             <constraint firstItem="LTd-Zg-J9X" firstAttribute="top" secondItem="6qT-Gf-ql4" secondAttribute="bottom" constant="20" id="XbB-0h-TRo"/>
                             <constraint firstItem="mOk-v4-lcl" firstAttribute="leading" secondItem="Z2g-Rs-NjR" secondAttribute="leadingMargin" constant="2" id="aRZ-O9-SfQ"/>
                             <constraint firstItem="079-NN-kq9" firstAttribute="top" secondItem="Z2g-Rs-NjR" secondAttribute="top" id="fOE-q6-1AM"/>
+                            <constraint firstItem="ivR-54-evt" firstAttribute="top" secondItem="1lx-qP-Law" secondAttribute="bottom" constant="50" id="h4e-3L-tiT"/>
                             <constraint firstAttribute="trailing" secondItem="079-NN-kq9" secondAttribute="trailing" id="m0b-1n-P4o"/>
+                            <constraint firstItem="1lx-qP-Law" firstAttribute="centerX" secondItem="ivR-54-evt" secondAttribute="centerX" id="m0x-1E-g7E"/>
                             <constraint firstItem="IHg-eZ-lpg" firstAttribute="top" secondItem="ald-cI-uFc" secondAttribute="bottom" id="sJP-a4-abC"/>
                             <constraint firstItem="IHg-eZ-lpg" firstAttribute="leading" secondItem="mOk-v4-lcl" secondAttribute="trailing" constant="-1" id="sp6-os-d3f"/>
                             <constraint firstItem="urS-WT-5HY" firstAttribute="top" secondItem="IHg-eZ-lpg" secondAttribute="top" id="wO7-Ul-nFc"/>
@@ -576,6 +587,7 @@
                     </view>
                     <connections>
                         <outlet property="centralView" destination="ivR-54-evt" id="Gtu-kt-ZHb"/>
+                        <outlet property="roundTimerLabel" destination="1lx-qP-Law" id="Pri-gG-UJh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjd-C6-tuO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -656,15 +668,24 @@
                                     <constraint firstItem="i7w-ez-3Aq" firstAttribute="leading" secondItem="Mf7-PR-ChE" secondAttribute="leading" id="yry-av-ppv"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUG-h2-cJO">
+                                <rect key="frame" x="268" y="122" width="65" height="28"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="VenusRising-Regular" family="Venus Rising" pointSize="23"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="i7w-ez-3Aq" firstAttribute="top" secondItem="mUG-h2-cJO" secondAttribute="bottom" constant="50" id="3eC-4z-Myp"/>
                             <constraint firstItem="RfD-8n-doM" firstAttribute="top" secondItem="nwe-RM-vVX" secondAttribute="bottom" id="CkM-b1-WZM"/>
                             <constraint firstItem="8tf-Wh-HcG" firstAttribute="top" secondItem="iSD-5T-lQk" secondAttribute="top" id="DY8-B1-O1m"/>
                             <constraint firstItem="SXb-3Z-Aac" firstAttribute="leading" secondItem="iSD-5T-lQk" secondAttribute="leadingMargin" id="F0v-oC-XgS"/>
                             <constraint firstAttribute="trailing" secondItem="8tf-Wh-HcG" secondAttribute="trailing" id="IRb-MA-n3H"/>
                             <constraint firstItem="w1A-7F-xrR" firstAttribute="top" secondItem="RfD-8n-doM" secondAttribute="top" id="Igy-0Q-ElI"/>
+                            <constraint firstItem="i7w-ez-3Aq" firstAttribute="centerX" secondItem="mUG-h2-cJO" secondAttribute="centerX" id="MqU-xG-vR7"/>
                             <constraint firstItem="SXb-3Z-Aac" firstAttribute="top" secondItem="nwe-RM-vVX" secondAttribute="bottom" id="OTW-6V-zAx"/>
                             <constraint firstItem="w1A-7F-xrR" firstAttribute="bottom" secondItem="svO-dK-Xb4" secondAttribute="bottom" id="PP2-Fl-2oP"/>
                             <constraint firstItem="w1A-7F-xrR" firstAttribute="leading" secondItem="svO-dK-Xb4" secondAttribute="trailing" id="QJa-p0-25P"/>
@@ -685,6 +706,7 @@
                     </view>
                     <connections>
                         <outlet property="peripheralView" destination="Mf7-PR-ChE" id="NDg-5H-eji"/>
+                        <outlet property="roundTimerLabel" destination="mUG-h2-cJO" id="1YD-7N-YUC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3r2-cs-GaD" userLabel="First Responder" sceneMemberID="firstResponder"/>

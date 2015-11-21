@@ -75,6 +75,11 @@
 //Timer for Scanning
 @property (nonatomic) NSTimer *scanTimer;
 
+//Round Timer
+@property (nonatomic) NSTimer *roundTimer;
+@property (nonatomic) NSTimeInterval roundTimeLeft;
+@property (strong, nonatomic) IBOutlet UILabel *roundTimerLabel;
+
 @end
 
 
@@ -115,6 +120,27 @@
     NSLog(@"Scanning stopped");
     
     [super viewWillDisappear:animated];
+}
+#pragma mark
+#pragma mark - Round Timer Countdown
+-(void)startGameTimer{
+    self.roundTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                       target:self
+                                                     selector:@selector(countDown:)
+                                                     userInfo:nil
+                                                      repeats:YES];
+    self.roundTimeLeft = 60;
+    self.roundTimeLeft--;
+    
+    self.roundTimerLabel.text = [NSString stringWithFormat:@":%f",self.roundTimeLeft];
+    
+    //[self.roundTimer fire];
+}
+
+-(void) countDown:(NSTimer *)timer {
+    if (--self.roundTimeLeft == 0) {
+        [self.roundTimer invalidate];
+    }
 }
 
 #pragma mark
@@ -248,6 +274,10 @@
         // And connect
         NSLog(@"Connecting to peripheral %@", peripheral);
         [self.centralManager connectPeripheral:peripheral options:nil];
+    }
+    
+    if (self.roundTimeLeft == 60){
+        [self.roundTimer fire];
     }
 }
 
