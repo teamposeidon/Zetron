@@ -254,6 +254,7 @@
 #pragma mark - Game Screen Segue
 -(void)pushToCentral {
     BTLECentralViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"CentralID"];
+    viewController.session = self.session;
     [self presentViewController:viewController animated:YES completion:nil];
     
     NSLog(@"Healthy (central)");
@@ -261,6 +262,7 @@
 
 - (void)pushToPeripheral {
     BTLEPeripheralViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"PeripheralID"];
+    viewController.session = self.session;
     [self presentViewController:viewController animated:YES completion:nil];
     
     NSLog(@"Virus!(peripheral)");

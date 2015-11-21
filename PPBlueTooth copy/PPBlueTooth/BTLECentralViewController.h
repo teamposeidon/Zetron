@@ -48,9 +48,11 @@
  Copyright (C) 2012 Apple Inc. All Rights Reserved.
  
  */
-
+#import <MultipeerConnectivity/MultipeerConnectivity.h>
 #import <UIKit/UIKit.h>
 
 @interface BTLECentralViewController : UIViewController
+
+@property (nonatomic, strong) MCSession *session;
 
 @end

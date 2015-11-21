@@ -107,7 +107,8 @@
     [self setUpAdvertisingTimer];
     
     self.timerIsOn = NO;
-
+    
+    NSLog(@"Session Peers: %@",self.session.connectedPeers);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -133,7 +134,6 @@
                                                      selector:@selector(countDown:)
                                                      userInfo:nil
                                                       repeats:YES];
-    self.roundTimeLeft = 60;
     
     //[self.roundTimer fire];
 }
@@ -141,6 +141,7 @@
 -(void) countDown:(NSTimer *)timer {
     self.roundTimeLeft--;
     self.roundTimerLabel.text = [NSString stringWithFormat:@":%.2f",self.roundTimeLeft];
+    NSLog(@"Round Time Left:%.2f",self.roundTimeLeft);
 
     if (self.roundTimeLeft == 0) {
             [self.roundTimer invalidate];
@@ -243,6 +244,7 @@
     
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];  
     [runLoop addTimer:self.scanTimer forMode:NSDefaultRunLoopMode];
+    
 }
 
 - (void)fireScanner:(NSTimer *)timer{
@@ -300,10 +302,10 @@
  */
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-    if (self.timerIsOn == NO){
-        [self startGameTimer];
-        self.timerIsOn = YES;
-    }
+//    if (self.timerIsOn == NO){
+//        [self startGameTimer];
+//        self.timerIsOn = YES;
+//    }
     
     NSLog(@"Peripheral Connected");
     
@@ -385,6 +387,16 @@
         // We have, so show the data,
         //[self.textView setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
         //[self.roundTimerLabel setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
+        //NSString* newStr = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+        
+        if (self.timerIsOn == NO){
+            NSString *timeString = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+            NSTimeInterval timeLeft = [timeString doubleValue] - 1;
+            self.roundTimeLeft = timeLeft;
+            [self startGameTimer];
+            self.timerIsOn = YES;
+            NSLog(@"Round Timer Started");
+        }
         
         // Cancel our subscription to the characteristic
         [peripheral setNotifyValue:NO forCharacteristic:characteristic];

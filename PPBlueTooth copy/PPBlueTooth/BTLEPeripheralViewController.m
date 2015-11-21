@@ -100,6 +100,7 @@
     // Setup Drop Shadow Animation
     [self setUpDropShadowSideBar];
     
+    NSLog(@"Session Peers: %@",self.session.connectedPeers);
     
     // Setup Advertising Timer
     //[self setUpAdvertisingTimer];
@@ -127,8 +128,6 @@
                                                      userInfo:nil
                                                       repeats:YES];
     self.roundTimeLeft = 60;
-   
-    
     
 }
 
@@ -259,7 +258,7 @@
     
     // Send this data
     NSString *virus = @"Virus";
-    NSString *roundTimeString = [NSString stringWithFormat:@"%f",self.roundTimeLeft];
+    NSString *roundTimeString = [NSString stringWithFormat:@"%.2f",self.roundTimeLeft];
     
     // Get the data
     self.dataToSend = [roundTimeString dataUsingEncoding:NSUTF8StringEncoding];
