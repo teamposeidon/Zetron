@@ -53,6 +53,8 @@
 @property (nonatomic) MCPeerID *localVirusRandomSelection;  //this is the random virus chosen by each phone
 @property (nonatomic) MCPeerID *peerVirusConfirmed;         //this is the MCPeerID that is confirmed virus for game
 
+@property (nonatomic) PlayerManager *playerManager;
+
 @end
 
 @implementation StartGameViewController

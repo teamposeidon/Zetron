@@ -612,15 +612,38 @@
                                 <animations/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cu-aT-aJG">
-                                <rect key="frame" x="20" y="200" width="560" height="200"/>
+                                <rect key="frame" x="20" y="150" width="560" height="300"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fhF-RA-Nlh">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="300"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="w25-C4-gl3">
+                                                <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="w25-C4-gl3" id="uh6-hT-XAc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <animations/>
+                                                </tableViewCellContentView>
+                                                <animations/>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="RQV-nV-hd4"/>
+                                    <constraint firstItem="fhF-RA-Nlh" firstAttribute="top" secondItem="1cu-aT-aJG" secondAttribute="top" id="39g-im-M0c"/>
+                                    <constraint firstAttribute="bottom" secondItem="fhF-RA-Nlh" secondAttribute="bottom" id="Em2-uT-DN8"/>
+                                    <constraint firstAttribute="height" constant="300" id="RQV-nV-hd4"/>
+                                    <constraint firstItem="fhF-RA-Nlh" firstAttribute="leading" secondItem="1cu-aT-aJG" secondAttribute="leading" id="STt-uP-t8o"/>
+                                    <constraint firstAttribute="trailing" secondItem="fhF-RA-Nlh" secondAttribute="trailing" id="Smi-dC-YlE"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9a-FR-IZe">
-                                <rect key="frame" x="169" y="164" width="263" height="28"/>
+                                <rect key="frame" x="169" y="114" width="263" height="28"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="VenusRising-Regular" family="Venus Rising" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -52,6 +52,7 @@
 
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 #import <UIKit/UIKit.h>
+#import "PlayerCharacter.h"
 
 @interface BTLEPeripheralViewController : UIViewController
 
