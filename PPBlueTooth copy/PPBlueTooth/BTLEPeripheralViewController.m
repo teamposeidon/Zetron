@@ -53,6 +53,7 @@
 #import "BTLEPeripheralViewController.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "TransferService.h"
+#import "GameOverViewController.h"
 
 
 @interface BTLEPeripheralViewController () <CBPeripheralManagerDelegate>
@@ -136,6 +137,7 @@
     self.roundTimerLabel.text = [NSString stringWithFormat:@":%.2f",self.roundTimeLeft];
     if (self.roundTimeLeft == 0) {
         [self.roundTimer invalidate];
+        [self pushToGameOverViewController];
     }
 }
 
@@ -402,6 +404,12 @@
     [alertController addAction:cancel];
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+- (void) pushToGameOverViewController{
+    
+    GameOverViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"GameOverID"];
+    viewController.session = self.session;
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 

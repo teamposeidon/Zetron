@@ -31,6 +31,7 @@
 		3DF72AD11BF7ED4E00B2E5E0 /* BTLECentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72ACD1BF7ED4E00B2E5E0 /* BTLECentralViewController.m */; };
 		3DF72AD21BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72ACF1BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m */; };
 		3DF72AD51BF81DBF00B2E5E0 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */; };
+		9ACE71451C0129B000F42C2E /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE71441C0129B000F42C2E /* GameOverViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		3DF72AD01BF7ED4E00B2E5E0 /* TransferService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferService.h; sourceTree = "<group>"; };
 		3DF72AD31BF81DBF00B2E5E0 /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
 		3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
+		9ACE71431C0129B000F42C2E /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
+		9ACE71441C0129B000F42C2E /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,11 +174,13 @@
 				3D2864541BFA8D4200C71A31 /* RulesViewController.m */,
 				3D2864491BF905C200C71A31 /* PoseidonProjectViewController.h */,
 				3D28644A1BF905C200C71A31 /* PoseidonProjectViewController.m */,
+				3DF72AD01BF7ED4E00B2E5E0 /* TransferService.h */,
 				3DF72ACC1BF7ED4E00B2E5E0 /* BTLECentralViewController.h */,
 				3DF72ACD1BF7ED4E00B2E5E0 /* BTLECentralViewController.m */,
 				3DF72ACE1BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.h */,
 				3DF72ACF1BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m */,
-				3DF72AD01BF7ED4E00B2E5E0 /* TransferService.h */,
+				9ACE71431C0129B000F42C2E /* GameOverViewController.h */,
+				9ACE71441C0129B000F42C2E /* GameOverViewController.m */,
 				3D39210A1BF11C23003C7C81 /* Main.storyboard */,
 				3D2864471BF9030200C71A31 /* Launch Screen.storyboard */,
 				3D39210D1BF11C23003C7C81 /* Assets.xcassets */,
@@ -354,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ACE71451C0129B000F42C2E /* GameOverViewController.m in Sources */,
 				3D2864551BFA8D4200C71A31 /* RulesViewController.m in Sources */,
 				3DF4ABB41BF7B3B400A77926 /* PlayerManager.m in Sources */,
 				3DF72AD11BF7ED4E00B2E5E0 /* BTLECentralViewController.m in Sources */,

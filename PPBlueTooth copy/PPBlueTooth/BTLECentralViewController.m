@@ -53,6 +53,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <AVFoundation/AVFoundation.h>
+#import "GameOverViewController.h"
 
 #import "TransferService.h"
 
@@ -145,6 +146,7 @@
 
     if (self.roundTimeLeft == 0) {
             [self.roundTimer invalidate];
+            [self pushToGameOverViewController];
         }
 }
 
@@ -485,6 +487,11 @@
     // If we've got this far, we're connected, but we're not subscribed, so we just disconnect
     [self.centralManager cancelPeripheralConnection:self.discoveredPeripheral];
 }
-
+- (void) pushToGameOverViewController{
+    
+    GameOverViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"GameOverID"];
+    viewController.session = self.session;
+    [self presentViewController:viewController animated:YES completion:nil];
+}
 
 @end

@@ -17,6 +17,7 @@
             <string>VenusRising-Regular</string>
             <string>VenusRising-Regular</string>
             <string>VenusRising-Regular</string>
+            <string>VenusRising-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -593,6 +594,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjd-C6-tuO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1091" y="-346"/>
+        </scene>
+        <!--Game Over View Controller-->
+        <scene sceneID="Y9b-Gt-Rls">
+            <objects>
+                <viewController storyboardIdentifier="GameOverID" id="Kad-MV-7QJ" customClass="GameOverViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YaQ-Uy-n4D"/>
+                        <viewControllerLayoutGuide type="bottom" id="X8n-57-6nJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L0z-Qg-2eC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallpaper" translatesAutoresizingMaskIntoConstraints="NO" id="k0i-R5-EJ7">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <animations/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cu-aT-aJG">
+                                <rect key="frame" x="20" y="200" width="560" height="200"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="RQV-nV-hd4"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9a-FR-IZe">
+                                <rect key="frame" x="169" y="164" width="263" height="28"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="VenusRising-Regular" family="Venus Rising" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1cu-aT-aJG" firstAttribute="centerY" secondItem="L0z-Qg-2eC" secondAttribute="centerY" id="2aO-JT-erj"/>
+                            <constraint firstAttribute="trailing" secondItem="1cu-aT-aJG" secondAttribute="trailing" constant="20" id="ARa-1j-eyK"/>
+                            <constraint firstItem="k0i-R5-EJ7" firstAttribute="leading" secondItem="L0z-Qg-2eC" secondAttribute="leading" id="Vzy-0g-WaB"/>
+                            <constraint firstItem="1cu-aT-aJG" firstAttribute="leading" secondItem="L0z-Qg-2eC" secondAttribute="leading" constant="20" id="Ya9-jr-5a1"/>
+                            <constraint firstItem="M9a-FR-IZe" firstAttribute="centerX" secondItem="1cu-aT-aJG" secondAttribute="centerX" id="agG-T4-jDN"/>
+                            <constraint firstItem="X8n-57-6nJ" firstAttribute="top" secondItem="k0i-R5-EJ7" secondAttribute="bottom" id="d56-6Y-168"/>
+                            <constraint firstItem="1cu-aT-aJG" firstAttribute="centerX" secondItem="L0z-Qg-2eC" secondAttribute="centerX" id="gY2-t1-vh7"/>
+                            <constraint firstItem="k0i-R5-EJ7" firstAttribute="top" secondItem="YaQ-Uy-n4D" secondAttribute="bottom" id="uhT-i2-eQ5"/>
+                            <constraint firstAttribute="trailing" secondItem="k0i-R5-EJ7" secondAttribute="trailing" id="xab-74-2ii"/>
+                            <constraint firstItem="1cu-aT-aJG" firstAttribute="top" secondItem="M9a-FR-IZe" secondAttribute="bottom" constant="8" id="yvb-K3-xO1"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YV1-Gi-qjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1787" y="-103"/>
         </scene>
         <!--Peripheral View Controller-->
         <scene sceneID="crt-4a-eZo">
