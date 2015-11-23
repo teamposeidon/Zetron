@@ -103,6 +103,7 @@
     
     NSLog(@"Session Peers: %@",self.session.connectedPeers);
     
+    
     // Setup Advertising Timer
     //[self setUpAdvertisingTimer];
 }

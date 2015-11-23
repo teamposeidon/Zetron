@@ -55,5 +55,6 @@
 @interface BTLECentralViewController : UIViewController
 
 @property (nonatomic, strong) MCSession *session;
+@property (nonatomic, strong) MCPeerID *peerID;
 
 @end

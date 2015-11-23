@@ -142,6 +142,9 @@
     self.rightBarView.layer.shadowOpacity = opacity;
     self.topBarView.layer.shadowOpacity = opacity;
     self.bottomBarView.layer.shadowOpacity = opacity;
+    
+    self.startGameButton.layer.shadowOpacity = opacity;
+
 }
 
 #pragma mark
@@ -265,6 +268,7 @@
 - (void)pushToPeripheral {
     BTLEPeripheralViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"PeripheralID"];
     viewController.session = self.session;
+    viewController.zetronPeerID = self.peerID;
     [self presentViewController:viewController animated:YES completion:nil];
     
     NSLog(@"Virus!(peripheral)");

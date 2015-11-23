@@ -11,9 +11,11 @@
 @interface GameOverViewController ()
 <
 UITableViewDataSource,
-UITableViewDelegate,
-MCSessionDelegate
+UITableViewDelegate
+//MCSessionDelegate
 >
+@property (strong, nonatomic) IBOutlet UITableView *gameTableView;
+@property (nonatomic) NSMutableArray * healthyPlayers;
 
 @end
 
@@ -22,60 +24,57 @@ MCSessionDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
    
+    self.gameTableView.delegate = self;
+    self.gameTableView.dataSource = self;
+    
     NSLog(@"Session: %@",self.session);
-    
     NSLog(@"Connected Peers: %@", self.session.connectedPeers);
-    
     NSMutableArray *player = [PlayerManager sharedInstance].player;
-    
     NSLog(@"My player: %@", player);
-
-
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return 2 ;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    if (section==0)
-//    {
-//        return [array1 count];
-//    }
-//    else{
-//        return [array2 count];
-//    }
-//}
-//
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    if(section == 0)
-//        return @"Section 1";
-//    else
-//        return @"Section 2";
-//}
-//
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    
-//    static NSString *CellIdentifier = @"Cell";
-//    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-//    }
-//    
-//    if (indexPath.section==0) {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2 ;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section==0){
+        return 1;
+    } else {
+        //return self.healthyPlayers.count;
+        return 1;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if(section == 0){
+        return @"Zetron";
+    } else {
+        return @"Cyber-Devs";
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"CellIdentifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (indexPath.section==0) {
 //        ObjectData *theCellData = [array1 objectAtIndex:indexPath.row];
 //        NSString *cellValue =theCellData.category;
-//        cell.textLabel.text = cellValue;
-//    }
-//    else {
+        cell.textLabel.text = @"Zetron";
+    } else {
+//        ObjectData *theCellData = [array2 objectAtIndex:indexPath.row];
+//        NSString *cellValue =theCellData.category;
+        cell.textLabel.text = @"Cyber-Dev";
+    }
+    return cell;
+}
 
 /*
  NSDictionary *dict = @{@"key1" : @"value1", @"key2" : @"value2", @"key3" : @"value3"};

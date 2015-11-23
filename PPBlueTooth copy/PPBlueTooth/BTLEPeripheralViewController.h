@@ -57,5 +57,5 @@
 @interface BTLEPeripheralViewController : UIViewController
 
 @property (nonatomic,strong) MCSession *session;
-
+@property (nonatomic,strong) MCPeerID *zetronPeerID;
 @end

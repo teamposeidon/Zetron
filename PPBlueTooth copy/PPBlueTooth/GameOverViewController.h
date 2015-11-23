@@ -14,6 +14,7 @@
 @interface GameOverViewController : UIViewController
 
 @property (nonatomic,strong) MCSession *session;
+@property (nonatomic,strong) MCPeerID *zetronPeerID;
 @property (nonatomic) PlayerManager *playerManager;
 
 @end
