@@ -53,14 +53,12 @@
 @property (nonatomic) MCPeerID *localVirusRandomSelection;  //this is the random virus chosen by each phone
 @property (nonatomic) MCPeerID *peerVirusConfirmed;         //this is the MCPeerID that is confirmed virus for game
 
-@property (nonatomic) PlayerManager *playerManager;
-
 @end
 
 @implementation StartGameViewController
 
 #pragma mark
-#pragma mark - View Did Load
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     
     [super viewDidLoad];
@@ -84,14 +82,19 @@
     // MCPeerSession Delegate
     self.session.delegate = self;
 
+    // Music Setup
+    [self musicBackGround];
+
+}
+
+#pragma mark
+#pragma mark - Sound Setup
+- (void) musicBackGround {
     NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"GlassCandy"  ofType:@"mp3"]];
-    
     
     self.play = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
     [self.play play];
 }
-
-
 
 #pragma mark
 #pragma mark - Drop Shadow Side Bar
@@ -142,9 +145,6 @@
     self.rightBarView.layer.shadowOpacity = opacity;
     self.topBarView.layer.shadowOpacity = opacity;
     self.bottomBarView.layer.shadowOpacity = opacity;
-    
-    self.startGameButton.layer.shadowOpacity = opacity;
-
 }
 
 #pragma mark
@@ -206,14 +206,18 @@
 
 #pragma mark
 #pragma mark - Convenience methods
-- (void)requireDeviceConnected
-{
+- (void)requireDeviceConnected {
     if (self.session.connectedPeers.count == 0) {
         self.browserController
         = [[MCBrowserViewController alloc] initWithServiceType:ppService session:self.session];
         self.browserController.delegate = self;
-        [self presentViewController:self.browserController animated:YES completion:nil];
-    } else {
+
+        
+        BrowsePlayersViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"BrowserPlayersID"];
+        viewController.session = self.session;
+        [self presentViewController:viewController animated:YES completion:nil];
+    }
+    else {
     }
 }
 
@@ -233,21 +237,21 @@
     [self assignVirusPeripheral];
     
     [self dismissViewControllerAnimated:YES completion:^{
-        [self sendMessageToPeers];
-    }];
+//        [self sendMessageToPeers];
+//    }];
      
 // kaira's code that includes virus string name
 //     ^{
-//        if ([self.player.zitronUserName rangeOfString:@"virus"].location == NSNotFound) {
-//            NSLog(@"string does not contain virus");
-//            [self.play stop];
-//            [self pushToCentral];
-//        } else {
-//            NSLog(@"string contains virus!");
-//            [self.play stop];
-//            [self pushToPeripheral];
-//        }
-//    }];
+        if ([self.player.zitronUserName rangeOfString:@"virus"].location == NSNotFound) {
+            NSLog(@"string does not contain virus");
+            [self.play stop];
+           // [self pushToCentral];
+        } else {
+            NSLog(@"string contains virus!");
+            [self.play stop];
+           // [self pushToPeripheral];
+        }
+    }];
 }
 // Notifies delegate that the user taps the cancel button.
 - (void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController {
@@ -268,7 +272,6 @@
 - (void)pushToPeripheral {
     BTLEPeripheralViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"PeripheralID"];
     viewController.session = self.session;
-    viewController.zetronPeerID = self.peerID;
     [self presentViewController:viewController animated:YES completion:nil];
     
     NSLog(@"Virus!(peripheral)");
@@ -281,10 +284,13 @@
     [self.play stop];
     
     //checks if this device's peerID matches that of the peerVirusConfirmed's peerID
-    if ([self.session.myPeerID.displayName isEqualToString:self.peerVirusConfirmed.displayName]){
-        [self pushToPeripheral];
+    //if ([self.session.myPeerID.displayName isEqualToString:self.peerVirusConfirmed.displayName]){
+    
+  if ([self.player.zitronUserName rangeOfString:@"virus"].location == NSNotFound) {
+      [self pushToCentral];
     } else {
-        [self pushToCentral];
+        [self pushToPeripheral];
+
     }
     
 }
@@ -333,7 +339,6 @@
     
     //tells SELF the data its sending out
     self.peerVirusConfirmed = self.localVirusRandomSelection;
-    
 }
 
 #pragma mark - Used MCSessionDelegate Methods
@@ -363,16 +368,5 @@
 - (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID{}
 - (void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress{}
 - (void)session:(MCSession *)session didFinishReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID atURL:(NSURL *)localURL withError:(NSError *)error{}
-
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

@@ -25,6 +25,34 @@
     self.gotItButton.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.gotItButton.layer.shadowRadius = 20.0;
     // Do any additional setup after loading the view.
+    
+    [self setupSpriteView];
+
+}
+
+- (void)setupSpriteView {
+    NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"SpriteView" owner:self options:nil];
+    SpriteView *spriteView = [views firstObject];
+    
+    //    spriteView.showsDrawCount = YES;
+    //    spriteView.showsFPS = YES;
+    //    spriteView.showsNodeCount = YES;
+    spriteView.frameInterval = 2;
+    spriteView.backgroundColor = [SKColor clearColor];
+    
+    //adding new view container
+    
+    UIView *rulesViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 450, 375, 110)];
+    rulesViewContainer.layer.borderColor = [UIColor clearColor].CGColor;
+    rulesViewContainer.layer.borderWidth = 2.0;
+    
+    [self.view addSubview:rulesViewContainer];
+    [rulesViewContainer addSubview:spriteView];
+    
+    //set up game scene
+    
+    RulesScene *newScene = [[RulesScene alloc] initWithSize:CGSizeMake(375, 110)];
+    [spriteView presentScene:newScene];
 }
 
 - (void)didReceiveMemoryWarning {

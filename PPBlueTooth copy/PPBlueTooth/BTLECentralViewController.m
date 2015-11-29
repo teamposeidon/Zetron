@@ -1,75 +1,28 @@
-/*
- 
- File: LECentralViewController.m
- 
- Abstract: Interface to use a CBCentralManager to scan for, and receive
- data from, a version of the app in Peripheral Mode
- 
- Version: 1.0
- 
- Disclaimer: IMPORTANT:  This Apple software is supplied to you by
- Apple Inc. ("Apple") in consideration of your agreement to the
- following terms, and your use, installation, modification or
- redistribution of this Apple software constitutes acceptance of these
- terms.  If you do not agree with these terms, please do not use,
- install, modify or redistribute this Apple software.
- 
- In consideration of your agreement to abide by the following terms, and
- subject to these terms, Apple grants you a personal, non-exclusive
- license, under Apple's copyrights in this original Apple software (the
- "Apple Software"), to use, reproduce, modify and redistribute the Apple
- Software, with or without modifications, in source and/or binary forms;
- provided that if you redistribute the Apple Software in its entirety and
- without modifications, you must retain this notice and the following
- text and disclaimers in all such redistributions of the Apple Software.
- Neither the name, trademarks, service marks or logos of Apple Inc.
- may be used to endorse or promote products derived from the Apple
- Software without specific prior written permission from Apple.  Except
- as expressly stated in this notice, no other rights or licenses, express
- or implied, are granted by Apple herein, including but not limited to
- any patent rights that may be infringed by your derivative works or by
- other works in which the Apple Software may be incorporated.
- 
- The Apple Software is provided by Apple on an "AS IS" basis.  APPLE
- MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION
- THE IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS
- FOR A PARTICULAR PURPOSE, REGARDING THE APPLE SOFTWARE OR ITS USE AND
- OPERATION ALONE OR IN COMBINATION WITH YOUR PRODUCTS.
- 
- IN NO EVENT SHALL APPLE BE LIABLE FOR ANY SPECIAL, INDIRECT, INCIDENTAL
- OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- INTERRUPTION) ARISING IN ANY WAY OUT OF THE USE, REPRODUCTION,
- MODIFICATION AND/OR DISTRIBUTION OF THE APPLE SOFTWARE, HOWEVER CAUSED
- AND WHETHER UNDER THEORY OF CONTRACT, TORT (INCLUDING NEGLIGENCE),
- STRICT LIABILITY OR OTHERWISE, EVEN IF APPLE HAS BEEN ADVISED OF THE
- POSSIBILITY OF SUCH DAMAGE.
- 
- Copyright (C) 2012 Apple Inc. All Rights Reserved.
- 
- */
+
 
 #import "BTLECentralViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <AVFoundation/AVFoundation.h>
 #import "GameOverViewController.h"
+#import "BTLEPeripheralViewController.h"
+#import "Parse.h"
 
 #import "TransferService.h"
 
 @interface BTLECentralViewController () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (strong, nonatomic) CBCentralManager      *centralManager;
-@property (strong, nonatomic) CBPeripheral          *discoveredPeripheral;
-@property (strong, nonatomic) NSMutableData         *data;
-@property (weak, nonatomic) IBOutlet UIView *centralView;
-@property (nonatomic) NSString *stringFromData;
+@property (weak, nonatomic) IBOutlet UITextView  *textView;
+@property (strong, nonatomic) CBCentralManager   *centralManager;
+@property (strong, nonatomic) CBPeripheral       *discoveredPeripheral;
+@property (strong, nonatomic) NSMutableData      *data;
+@property (weak, nonatomic) IBOutlet UIView      *centralView;
+@property (nonatomic) NSString                   *stringFromData;
 
 // Timer for Shadow
-@property (nonatomic) NSTimer *timer;
-@property (nonatomic) BOOL countDown;
-@property (nonatomic) double counter;
+@property (nonatomic) NSTimer   *timer;
+@property (nonatomic) BOOL      countDown;
+@property (nonatomic) double    counter;
 
 //Sound
 @property (nonatomic) AVAudioPlayer *player;
@@ -83,11 +36,73 @@
 @property (strong, nonatomic) IBOutlet UILabel *roundTimerLabel;
 @property (nonatomic) BOOL timerIsOn;
 
+// Download
+@property (nonatomic) UIProgressView *progressBar;
+@property (nonatomic) UILabel *progressBarLabel;
+@property (nonatomic) BOOL progressBarIncreasing;
+@property (nonatomic) NSNumber *decibelBar;
+@property (nonatomic) NSNumber *prevDeciBar;
+@property (nonatomic) NSNumber *nuDeciBar;
+
+@property (nonatomic) NSTimer *testTimer;
+
 @end
 
 
 
 @implementation BTLECentralViewController
+
+static int progCount = 0;
+int rssiCount = 0;
+BOOL rssiSetNum;
+
+BOOL alreadyVirus = NO;
+
+#pragma mark
+#pragma mark - Load Progress Bar
+- (void) loadProgressBar {
+    
+    //creating progress bar & adding to subview
+    self.progressBar = [[UIProgressView alloc] initWithFrame:CGRectMake(100, 40, 180, 400)];
+    self.progressBar.progressViewStyle = UIProgressViewStyleDefault;
+    self.progressBar.trackTintColor = [UIColor whiteColor];
+    self.progressBar.progressTintColor = [UIColor redColor];
+    
+    [self.view addSubview: self.progressBar];
+    
+    //creating progress bar label and adding to subview
+    self.progressBarLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 30, 150, 25)];
+    self.progressBarLabel.text = [NSString stringWithFormat:@"virus loading: %d%%", progCount];
+    self.progressBarLabel.textAlignment = NSTextAlignmentCenter;
+    self.progressBarLabel.font = [UIFont fontWithName:@"Menlo" size:12];
+    self.progressBarLabel.textColor = [UIColor whiteColor];
+    
+    [self.view addSubview:self.progressBarLabel];
+}
+
+// This is called from virusUploadTime ()
+- (void) redVirusUploadProgress {
+    [self.progressBar setProgress:(self.progressBar.progress + 0.01) animated:YES];
+    [self updateProgressBarLabel];
+}
+
+// This is called when RSSI hits the RED ZONE
+- (void) virusUpoloadTime {
+
+    NSTimer *downloadVirusTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                                                   target:self
+                                                                 selector:@selector(redVirusUploadProgress)
+                                                                 userInfo:nil
+                                                                  repeats:YES];
+
+}
+
+- (void) updateProgressBarLabel {
+    
+    // updates the percentage on virus download
+    progCount = self.progressBar.progress * 100;
+    self.progressBarLabel.text = [NSString stringWithFormat:@"virus loading %d%%", progCount];
+}
 
 #pragma mark
 #pragma mark - View Lifecycle
@@ -109,12 +124,19 @@
     
     self.timerIsOn = NO;
     
-    NSLog(@"Session Peers: %@",self.session.connectedPeers);
+    [self loadProgressBar];
+    
+//    [self timerDownload];
+    
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LazerhawkOverdrive" ofType:@"mp3"]];
     
+    NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LazerhawkOverdrive" ofType:@"mp3"]];
     self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
     [self.player play];
 }
@@ -136,7 +158,6 @@
                                                      userInfo:nil
                                                       repeats:YES];
     
-    //[self.roundTimer fire];
 }
 
 -(void) countDown:(NSTimer *)timer {
@@ -163,7 +184,7 @@
 - (void)setUpDropShadowSideBar {
     
     // Side Bar Timer Animation
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.09
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0
                                                   target:self
                                                 selector:@selector(updateShadowTimer)
                                                 userInfo:nil
@@ -242,8 +263,6 @@
                                                  userInfo:nil
                                                   repeats:YES];
     
-    //[self.scanTimer fire];
-    
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];  
     [runLoop addTimer:self.scanTimer forMode:NSDefaultRunLoopMode];
     
@@ -253,28 +272,81 @@
     [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]]
                                                 options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
     
-    NSLog(@"Scanning!");
+   // NSLog(@"Scanning!");
 }
-
-
-
 
 
 /** This callback comes whenever a peripheral that is advertising the TRANSFER_SERVICE_UUID is discovered.
  *  We check the RSSI, to make sure it's close enough that we're interested in it, and if it is, 
  *  we start the connection process
  */
-- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
-{
-   
+
+
+
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
+    
     if (RSSI.integerValue > -32) {
-        return [self.centralView setBackgroundColor:[UIColor redColor]];
-    } else if (RSSI.integerValue < -55) {
-        return [self.centralView setBackgroundColor:[UIColor yellowColor]];
-    }  else if (RSSI.integerValue < -75) {
-        return [self.centralView setBackgroundColor:[UIColor greenColor]];
-    }
         
+        alreadyVirus = YES;
+        
+        [self.centralView setBackgroundColor:[UIColor redColor]];
+        
+        NSTimer *waitTwoSeconds = [NSTimer scheduledTimerWithTimeInterval:2.0
+                                                                     target:self
+                                                                   selector:@selector(virusUpoloadTime)
+                                                                   userInfo:nil
+                                                                    repeats:NO];
+
+        if (self.progressBar.progress == 1.0){
+            [waitTwoSeconds invalidate];
+            
+            BTLEPeripheralViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"PeripheralID"];
+            [self presentViewController:viewController animated:YES completion:nil];
+            
+        }
+        
+    } else if (RSSI.integerValue < -55 && alreadyVirus == NO) {
+        
+        if (self.prevDeciBar == nil && rssiCount == 0){
+            self.prevDeciBar = self.decibelBar;
+            rssiCount = 1;
+        }
+        if (rssiCount == 1){
+            self.nuDeciBar = self.decibelBar;
+            rssiSetNum = YES;
+            rssiCount = 2;
+        }
+        
+        if (self.prevDeciBar != nil && self.nuDeciBar != nil){
+            if (rssiSetNum == YES){
+                NSLog(@"Running Third");
+                self.prevDeciBar = self.decibelBar;
+                rssiSetNum = NO;
+            } else {
+                self.nuDeciBar = self.decibelBar;
+                rssiSetNum = YES;
+            }
+            if (self.nuDeciBar < self.prevDeciBar){
+                self.progressBarIncreasing = YES;
+                [self.progressBar setProgress:(self.progressBar.progress + 0.09) animated:YES];
+                [self updateProgressBarLabel];
+                
+            } else if (self.nuDeciBar > self.prevDeciBar){
+                self.progressBarIncreasing = NO;
+                [self.progressBar setProgress:(self.progressBar.progress - 0.09) animated:YES];
+                [self updateProgressBarLabel];
+                
+            }
+        }
+        
+        [self.centralView setBackgroundColor:[UIColor yellowColor]];
+        
+    }  else if (RSSI.integerValue < -75 && alreadyVirus == NO) {
+        [self.progressBar setProgress:(self.progressBar.progress - 0.00) animated:YES];
+        [self.centralView setBackgroundColor:[UIColor greenColor]];
+    }
+    
+
     NSLog(@"Discovered %@ at %@", peripheral.name, RSSI);
     
     // Ok, it's in range - have we already seen it?

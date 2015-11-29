@@ -8,13 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
-#import "PlayerManager.h"
-#import "PlayerCharacter.h"
 
 @interface GameOverViewController : UIViewController
 
 @property (nonatomic,strong) MCSession *session;
-@property (nonatomic,strong) MCPeerID *zetronPeerID;
-@property (nonatomic) PlayerManager *playerManager;
 
 @end

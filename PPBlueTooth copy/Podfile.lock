@@ -1,0 +1,19 @@
+PODS:
+  - Bolts/Tasks (1.5.0)
+  - Parse (1.10.0):
+    - Bolts/Tasks (~> 1.5)
+  - URBNAlert (1.9):
+    - URBNConvenience (~> 0.8.2)
+  - URBNConvenience (0.8.7)
+
+DEPENDENCIES:
+  - Parse
+  - URBNAlert
+
+SPEC CHECKSUMS:
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  Parse: 90b2544822200f84b18bfacc4e8b0a3a6c3584a2
+  URBNAlert: 2403f473e3025bdcb3d3e1c385d4c6a86b73e322
+  URBNConvenience: 043eb5f7cc0825cc94fcb4535f91fd27f22ec8de
+
+COCOAPODS: 0.38.2

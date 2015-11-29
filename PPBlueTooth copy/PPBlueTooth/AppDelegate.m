@@ -5,7 +5,7 @@
 //  Created by Fatima Zenine Villanueva on 11/9/15.
 //  Copyright © 2015 apps. All rights reserved.
 //
-
+#import "Parse.h"
 #import "AppDelegate.h"
 
 NSString * const ppService = @"poseidon-team";
@@ -21,6 +21,18 @@ NSString * const ppService = @"poseidon-team";
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
+    // [Optional] Power your app with Local Datastore. For more info, go to
+    // https://parse.com/docs/ios_guide#localdatastore/iOS
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"NmKtMVNrupXApdfBsOnT4NaORNrl7zkd9WwguQRr"
+                  clientKey:@"GAXjWsVkGMeVdhbBj6TDEGu8w1XnLXn9JMua5Dyf"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
       return YES;
 }

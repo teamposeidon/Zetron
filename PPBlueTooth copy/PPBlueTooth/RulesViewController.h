@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SpriteKit/SpriteKit.h>
+#import "RulesScene.h"
+#import "SpriteView.h"
+
 
 @interface RulesViewController : UIViewController
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0D71041C0937DE00D639F3 /* BrowsePlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D71031C0937DE00D639F3 /* BrowsePlayersViewController.m */; };
 		3D2864481BF9030200C71A31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2864471BF9030200C71A31 /* Launch Screen.storyboard */; };
 		3D28644B1BF905C200C71A31 /* PoseidonProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D28644A1BF905C200C71A31 /* PoseidonProjectViewController.m */; };
 		3D28644E1BF9098A00C71A31 /* poseidon.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3D28644D1BF9098A00C71A31 /* poseidon.gif */; };
@@ -15,6 +16,9 @@
 		3D2864551BFA8D4200C71A31 /* RulesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2864541BFA8D4200C71A31 /* RulesViewController.m */; };
 		3D2864571BFBE5BD00C71A31 /* LazerhawkOverdrive.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2864561BFBE5BD00C71A31 /* LazerhawkOverdrive.mp3 */; };
 		3D2864591BFBE75F00C71A31 /* GlassCandy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2864581BFBE75F00C71A31 /* GlassCandy.mp3 */; };
+		3D2A1E2D1C05170200C57B99 /* SpriteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2A1E2C1C05170200C57B99 /* SpriteView.xib */; };
+		3D2A1E301C05171700C57B99 /* RulesScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2A1E2F1C05171700C57B99 /* RulesScene.m */; };
+		3D2A1E331C05173400C57B99 /* SpriteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2A1E321C05173400C57B99 /* SpriteView.m */; };
 		3D3921031BF11C23003C7C81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3921021BF11C23003C7C81 /* main.m */; };
 		3D3921061BF11C23003C7C81 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3921051BF11C23003C7C81 /* AppDelegate.m */; };
 		3D3921091BF11C23003C7C81 /* StartScreenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3921081BF11C23003C7C81 /* StartScreenVC.m */; };
@@ -25,13 +29,15 @@
 		3D3921351BF11C46003C7C81 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3921341BF11C46003C7C81 /* GameKit.framework */; };
 		3D3921371BF11C98003C7C81 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3921361BF11C98003C7C81 /* CoreBluetooth.framework */; };
 		3D3921391BF12324003C7C81 /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3921381BF12324003C7C81 /* MultipeerConnectivity.framework */; };
+		3DE3CDCE1C0A2BEA00056EFD /* PPMatchmaking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE3CDCD1C0A2BEA00056EFD /* PPMatchmaking.m */; };
 		3DF4ABAB1BF3D81F00A77926 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DF4ABAA1BF3D81F00A77926 /* CoreLocation.framework */; };
 		3DF4ABB11BF5954E00A77926 /* PlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4ABB01BF5954E00A77926 /* PlayerCharacter.m */; };
 		3DF4ABB41BF7B3B400A77926 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4ABB31BF7B3B400A77926 /* PlayerManager.m */; };
 		3DF72AD11BF7ED4E00B2E5E0 /* BTLECentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72ACD1BF7ED4E00B2E5E0 /* BTLECentralViewController.m */; };
 		3DF72AD21BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72ACF1BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m */; };
 		3DF72AD51BF81DBF00B2E5E0 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */; };
-		9ACE71461C024C0500F42C2E /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE71441C0129B000F42C2E /* GameOverViewController.m */; };
+		8F1751E746AB70EC6467FBC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44701EE89854B05CA589F1E /* libPods.a */; };
+		9ACE71451C0129B000F42C2E /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE71441C0129B000F42C2E /* GameOverViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D0D71021C0937DE00D639F3 /* BrowsePlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowsePlayersViewController.h; sourceTree = "<group>"; };
+		3D0D71031C0937DE00D639F3 /* BrowsePlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowsePlayersViewController.m; sourceTree = "<group>"; };
 		3D2864471BF9030200C71A31 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		3D2864491BF905C200C71A31 /* PoseidonProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PoseidonProjectViewController.h; sourceTree = "<group>"; };
 		3D28644A1BF905C200C71A31 /* PoseidonProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PoseidonProjectViewController.m; sourceTree = "<group>"; };
@@ -62,6 +70,11 @@
 		3D2864541BFA8D4200C71A31 /* RulesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesViewController.m; sourceTree = "<group>"; };
 		3D2864561BFBE5BD00C71A31 /* LazerhawkOverdrive.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = LazerhawkOverdrive.mp3; sourceTree = "<group>"; };
 		3D2864581BFBE75F00C71A31 /* GlassCandy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GlassCandy.mp3; sourceTree = "<group>"; };
+		3D2A1E2C1C05170200C57B99 /* SpriteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpriteView.xib; sourceTree = "<group>"; };
+		3D2A1E2E1C05171700C57B99 /* RulesScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulesScene.h; sourceTree = "<group>"; };
+		3D2A1E2F1C05171700C57B99 /* RulesScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesScene.m; sourceTree = "<group>"; };
+		3D2A1E311C05173400C57B99 /* SpriteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteView.h; sourceTree = "<group>"; };
+		3D2A1E321C05173400C57B99 /* SpriteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteView.m; sourceTree = "<group>"; };
 		3D3920FE1BF11C23003C7C81 /* PPBlueTooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPBlueTooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D3921021BF11C23003C7C81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3D3921041BF11C23003C7C81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -80,6 +93,8 @@
 		3D3921341BF11C46003C7C81 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		3D3921361BF11C98003C7C81 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		3D3921381BF12324003C7C81 /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
+		3DE3CDCC1C0A2BEA00056EFD /* PPMatchmaking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPMatchmaking.h; sourceTree = "<group>"; };
+		3DE3CDCD1C0A2BEA00056EFD /* PPMatchmaking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPMatchmaking.m; sourceTree = "<group>"; };
 		3DF4ABAA1BF3D81F00A77926 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3DF4ABAF1BF5954E00A77926 /* PlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCharacter.h; sourceTree = "<group>"; };
 		3DF4ABB01BF5954E00A77926 /* PlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCharacter.m; sourceTree = "<group>"; };
@@ -94,6 +109,9 @@
 		3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
 		9ACE71431C0129B000F42C2E /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
 		9ACE71441C0129B000F42C2E /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
+		AC996344FA89D38F3E342BA6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BB174B3C411EEE215337F848 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E44701EE89854B05CA589F1E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +123,7 @@
 				3D3921391BF12324003C7C81 /* MultipeerConnectivity.framework in Frameworks */,
 				3D3921371BF11C98003C7C81 /* CoreBluetooth.framework in Frameworks */,
 				3D3921351BF11C46003C7C81 /* GameKit.framework in Frameworks */,
+				8F1751E746AB70EC6467FBC1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +144,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2249A7C61C2F1EB4A0891A73 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB174B3C411EEE215337F848 /* Pods.debug.xcconfig */,
+				AC996344FA89D38F3E342BA6 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3D28644C1BF9097100C71A31 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +172,8 @@
 				3D39211A1BF11C23003C7C81 /* PPBlueToothTests */,
 				3D3921251BF11C23003C7C81 /* PPBlueToothUITests */,
 				3D3920FF1BF11C23003C7C81 /* Products */,
+				2249A7C61C2F1EB4A0891A73 /* Pods */,
+				A8E559AAAC52D6F8FB0F2BA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,6 +190,15 @@
 		3D3921001BF11C23003C7C81 /* PPBlueTooth */ = {
 			isa = PBXGroup;
 			children = (
+				3DE3CDCC1C0A2BEA00056EFD /* PPMatchmaking.h */,
+				3DE3CDCD1C0A2BEA00056EFD /* PPMatchmaking.m */,
+				3D0D71021C0937DE00D639F3 /* BrowsePlayersViewController.h */,
+				3D0D71031C0937DE00D639F3 /* BrowsePlayersViewController.m */,
+				3D2A1E2E1C05171700C57B99 /* RulesScene.h */,
+				3D2A1E2F1C05171700C57B99 /* RulesScene.m */,
+				3D2A1E2C1C05170200C57B99 /* SpriteView.xib */,
+				3D2A1E311C05173400C57B99 /* SpriteView.h */,
+				3D2A1E321C05173400C57B99 /* SpriteView.m */,
 				3D3921071BF11C23003C7C81 /* StartScreenVC.h */,
 				3D3921081BF11C23003C7C81 /* StartScreenVC.m */,
 				3D3921041BF11C23003C7C81 /* AppDelegate.h */,
@@ -221,6 +260,14 @@
 			path = PPBlueToothUITests;
 			sourceTree = "<group>";
 		};
+		A8E559AAAC52D6F8FB0F2BA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E44701EE89854B05CA589F1E /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,9 +275,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D39212B1BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "PPBlueTooth" */;
 			buildPhases = (
+				FCA4E0DF3603B4D3A99CB1D5 /* Check Pods Manifest.lock */,
 				3D3920FA1BF11C23003C7C81 /* Sources */,
 				3D3920FB1BF11C23003C7C81 /* Frameworks */,
 				3D3920FC1BF11C23003C7C81 /* Resources */,
+				5AA41685D2339ED0EF690B43 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -327,6 +376,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2A1E2D1C05170200C57B99 /* SpriteView.xib in Resources */,
 				3D2864521BFA74F800C71A31 /* venus rising rg.ttf in Resources */,
 				3D2864501BFA73BD00C71A31 /* blade.ttf in Resources */,
 				3D2864481BF9030200C71A31 /* Launch Screen.storyboard in Resources */,
@@ -354,22 +404,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5AA41685D2339ED0EF690B43 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCA4E0DF3603B4D3A99CB1D5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3D3920FA1BF11C23003C7C81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9ACE71461C024C0500F42C2E /* GameOverViewController.m in Sources */,
+				9ACE71451C0129B000F42C2E /* GameOverViewController.m in Sources */,
 				3D2864551BFA8D4200C71A31 /* RulesViewController.m in Sources */,
 				3DF4ABB41BF7B3B400A77926 /* PlayerManager.m in Sources */,
+				3D2A1E331C05173400C57B99 /* SpriteView.m in Sources */,
 				3DF72AD11BF7ED4E00B2E5E0 /* BTLECentralViewController.m in Sources */,
+				3D2A1E301C05171700C57B99 /* RulesScene.m in Sources */,
 				3D3921091BF11C23003C7C81 /* StartScreenVC.m in Sources */,
 				3DF72AD51BF81DBF00B2E5E0 /* StartGameViewController.m in Sources */,
 				3DF72AD21BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m in Sources */,
 				3D3921061BF11C23003C7C81 /* AppDelegate.m in Sources */,
+				3DE3CDCE1C0A2BEA00056EFD /* PPMatchmaking.m in Sources */,
 				3DF4ABB11BF5954E00A77926 /* PlayerCharacter.m in Sources */,
 				3D28644B1BF905C200C71A31 /* PoseidonProjectViewController.m in Sources */,
 				3D3921031BF11C23003C7C81 /* main.m in Sources */,
+				3D0D71041C0937DE00D639F3 /* BrowsePlayersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +585,7 @@
 		};
 		3D39212C1BF11C23003C7C81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB174B3C411EEE215337F848 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -512,6 +600,7 @@
 		};
 		3D39212D1BF11C23003C7C81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC996344FA89D38F3E342BA6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

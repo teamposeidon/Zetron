@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "BrowsePlayersViewController.h"
 
 @interface StartGameViewController : UIViewController
 
