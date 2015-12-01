@@ -126,6 +126,8 @@ BOOL alreadyVirus = NO;
     
     [self loadProgressBar];
     
+    [self setupPlayerView];
+    
 //    [self timerDownload];
     
     PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
@@ -568,6 +570,28 @@ BOOL alreadyVirus = NO;
     viewController.session = self.session;
     viewController.gameEndStatus = @"central";
     [self presentViewController:viewController animated:YES completion:nil];
+}
+
+- (void)setupPlayerView {
+    NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"PlayerView" owner:self options:nil];
+    PlayerView *playerView = [views firstObject];
+    
+    //    playerView.showsDrawCount = YES;
+    //    playerView.showsFPS = YES;
+    //    playerView.showsNodeCount = YES;
+    
+    playerView.frameInterval = 2;
+    playerView.layer.cornerRadius = self.centralView.frame.size.width / 2;
+    playerView.layer.cornerRadius = self.centralView.frame.size.height / 2;
+    playerView.clipsToBounds = YES;
+    playerView.backgroundColor = [SKColor clearColor];
+    
+    //adding new view container
+    
+    [self.centralView addSubview:playerView];
+    
+    PlayerScene *newScene = [[PlayerScene alloc] initWithSize:CGSizeMake(200, 200)];
+    [playerView presentScene:newScene];
 }
 
 @end
