@@ -77,7 +77,7 @@
                                                      selector:@selector(countDown:)
                                                      userInfo:nil
                                                       repeats:YES];
-    self.roundTimeLeft = 60;
+    self.roundTimeLeft = 5;
     
 }
 
@@ -86,11 +86,27 @@
     self.roundTimerLabel.text = [NSString stringWithFormat:@":%.2f",self.roundTimeLeft];
     if (self.roundTimeLeft == 0) {
         [self.roundTimer invalidate];
+        [self sendMessageToEndGame];
         [self pushToGameOverViewController];
     }
 }
 
-
+-(void)sendMessageToEndGame{
+    
+    NSString *endGameCommand = @"endGame";
+    
+    // Get the data
+    self.dataToSend = [endGameCommand dataUsingEncoding:NSUTF8StringEncoding];
+    
+    // Reset the index
+    self.sendDataIndex = 0;
+    
+    [self.peripheralManager updateValue:self.dataToSend forCharacteristic:self.transferCharacteristic onSubscribedCentrals:nil];
+    
+    // Start sending
+    //[self sendData];
+    
+}
 #pragma mark
 #pragma mark - Draw Circle
 - (void)drawCircle {
@@ -357,6 +373,7 @@
 - (void) pushToGameOverViewController{
     
     GameOverViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"GameOverID"];
+    viewController.gameEndStatus = @"peripheral";
     viewController.session = self.session;
     [self presentViewController:viewController animated:YES completion:nil];
 }

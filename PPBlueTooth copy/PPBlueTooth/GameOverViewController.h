@@ -12,5 +12,7 @@
 @interface GameOverViewController : UIViewController
 
 @property (nonatomic,strong) MCSession *session;
+@property (nonatomic) NSString *gameEndStatus;
+@property (strong, nonatomic) IBOutlet UILabel *gameEndLabel;
 
 @end

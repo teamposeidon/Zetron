@@ -18,13 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.gameResultsView.layer.cornerRadius = 4.0f;
+    
+    if ([self.gameEndStatus isEqualToString:@"central"]){
+        self.gameEndLabel.text = @"You have survived The Zetron Virus!";
+        self.gameEndLabel.textColor = [UIColor greenColor];
+        
+    } else if ([self.gameEndStatus isEqualToString:@"peripheral"]){
+        
+        self.gameEndLabel.text = @"Zetron!!! Continue To Infect Benign Systems!";
+        self.gameEndLabel.textColor = [UIColor redColor];
+    }
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 /*
 #pragma mark - Navigation

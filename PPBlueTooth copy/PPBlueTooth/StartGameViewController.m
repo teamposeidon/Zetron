@@ -150,9 +150,9 @@
 #pragma mark
 #pragma mark - Start Button
 - (IBAction)findPlayersTapped:(id)sender {
-    if (self.data.player.count == 0) {
-        [self alertControllerShow];
-    }
+//    if (self.data.player.count == 0) {
+//        [self alertControllerShow];
+//    }
 }
 
 #pragma mark

@@ -477,6 +477,9 @@ BOOL alreadyVirus = NO;
         
         // and disconnect from the peripehral
         [self.centralManager cancelPeripheralConnection:peripheral];
+    } else if ([stringFromData isEqualToString:@"endGame"]){
+        
+        [self pushToGameOverViewController];
     }
 
     // Otherwise, just add the data on to what we already have
@@ -563,6 +566,7 @@ BOOL alreadyVirus = NO;
     
     GameOverViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"GameOverID"];
     viewController.session = self.session;
+    viewController.gameEndStatus = @"central";
     [self presentViewController:viewController animated:YES completion:nil];
 }
 

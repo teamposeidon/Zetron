@@ -190,10 +190,8 @@
 		3D3921001BF11C23003C7C81 /* PPBlueTooth */ = {
 			isa = PBXGroup;
 			children = (
-				3DE3CDCC1C0A2BEA00056EFD /* PPMatchmaking.h */,
-				3DE3CDCD1C0A2BEA00056EFD /* PPMatchmaking.m */,
-				3D0D71021C0937DE00D639F3 /* BrowsePlayersViewController.h */,
-				3D0D71031C0937DE00D639F3 /* BrowsePlayersViewController.m */,
+				3D3921041BF11C23003C7C81 /* AppDelegate.h */,
+				3D3921051BF11C23003C7C81 /* AppDelegate.m */,
 				3D2A1E2E1C05171700C57B99 /* RulesScene.h */,
 				3D2A1E2F1C05171700C57B99 /* RulesScene.m */,
 				3D2A1E2C1C05170200C57B99 /* SpriteView.xib */,
@@ -201,8 +199,6 @@
 				3D2A1E321C05173400C57B99 /* SpriteView.m */,
 				3D3921071BF11C23003C7C81 /* StartScreenVC.h */,
 				3D3921081BF11C23003C7C81 /* StartScreenVC.m */,
-				3D3921041BF11C23003C7C81 /* AppDelegate.h */,
-				3D3921051BF11C23003C7C81 /* AppDelegate.m */,
 				3DF4ABAF1BF5954E00A77926 /* PlayerCharacter.h */,
 				3DF4ABB01BF5954E00A77926 /* PlayerCharacter.m */,
 				3DF4ABB21BF7B3B400A77926 /* PlayerManager.h */,
@@ -214,6 +210,10 @@
 				3D2864491BF905C200C71A31 /* PoseidonProjectViewController.h */,
 				3D28644A1BF905C200C71A31 /* PoseidonProjectViewController.m */,
 				3DF72AD01BF7ED4E00B2E5E0 /* TransferService.h */,
+				3DE3CDCC1C0A2BEA00056EFD /* PPMatchmaking.h */,
+				3DE3CDCD1C0A2BEA00056EFD /* PPMatchmaking.m */,
+				3D0D71021C0937DE00D639F3 /* BrowsePlayersViewController.h */,
+				3D0D71031C0937DE00D639F3 /* BrowsePlayersViewController.m */,
 				3DF72ACC1BF7ED4E00B2E5E0 /* BTLECentralViewController.h */,
 				3DF72ACD1BF7ED4E00B2E5E0 /* BTLECentralViewController.m */,
 				3DF72ACE1BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.h */,
