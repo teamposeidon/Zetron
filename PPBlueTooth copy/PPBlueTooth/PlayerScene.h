@@ -14,5 +14,7 @@
 @property (nonatomic) SKSpriteNode *healthyPlayer;
 @property (nonatomic) SKSpriteNode *infectedPlayer;
 @property (nonatomic) SKSpriteNode *viralPlayer;
+@property (nonatomic) UIButton *button;
+@property (nonatomic) NSString *checkString;
 
 @end
