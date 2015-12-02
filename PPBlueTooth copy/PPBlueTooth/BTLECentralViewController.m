@@ -478,7 +478,7 @@ BOOL alreadyVirus = NO;
         // and disconnect from the peripehral
         [self.centralManager cancelPeripheralConnection:peripheral];
     } else if ([stringFromData isEqualToString:@"endGame"]){
-        
+        NSLog(@"End Game!");
         [self pushToGameOverViewController];
     }
 

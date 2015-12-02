@@ -71,7 +71,7 @@
     
     [self.animatedView removeFromSuperview];
 
-        NSLog(@"Number of connected peers: %lu", (unsigned long)self.ppMatchmaking.connectedPeers.count);
+    NSLog(@"Number of connected peers: %lu", (unsigned long)self.ppMatchmaking.connectedPeers.count);
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
