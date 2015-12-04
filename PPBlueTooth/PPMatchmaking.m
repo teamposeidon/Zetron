@@ -67,6 +67,8 @@
     
     self.connected = YES;
     self.acceptingGuests = YES;
+      
+      self.endGameStatus = gameStatus;
   }
 }
 
