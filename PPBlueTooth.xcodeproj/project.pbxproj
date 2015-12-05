@@ -43,6 +43,8 @@
 		3DF72AD51BF81DBF00B2E5E0 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */; };
 		51FC0E511C100A4D006A387C /* MatchMakingPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FC0E501C100A4D006A387C /* MatchMakingPlayerCell.m */; };
 		8F1751E746AB70EC6467FBC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44701EE89854B05CA589F1E /* libPods.a */; };
+		9AB6FA7E1C13B11D00250408 /* CustomZetronTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6FA7C1C13B11D00250408 /* CustomZetronTableViewCell.m */; };
+		9AB6FA7F1C13B11D00250408 /* CustomZetronTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB6FA7D1C13B11D00250408 /* CustomZetronTableViewCell.xib */; };
 		9ACE71451C0129B000F42C2E /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACE71441C0129B000F42C2E /* GameOverViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +126,9 @@
 		3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
 		51FC0E4F1C100A4D006A387C /* MatchMakingPlayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchMakingPlayerCell.h; sourceTree = "<group>"; };
 		51FC0E501C100A4D006A387C /* MatchMakingPlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchMakingPlayerCell.m; sourceTree = "<group>"; };
+		9AB6FA7B1C13B11D00250408 /* CustomZetronTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomZetronTableViewCell.h; sourceTree = "<group>"; };
+		9AB6FA7C1C13B11D00250408 /* CustomZetronTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomZetronTableViewCell.m; sourceTree = "<group>"; };
+		9AB6FA7D1C13B11D00250408 /* CustomZetronTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomZetronTableViewCell.xib; sourceTree = "<group>"; };
 		9ACE71431C0129B000F42C2E /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
 		9ACE71441C0129B000F42C2E /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
 		AC996344FA89D38F3E342BA6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +250,9 @@
 				22BA77FB1C11211F00C04E77 /* PlayerScene.m */,
 				9ACE71431C0129B000F42C2E /* GameOverViewController.h */,
 				9ACE71441C0129B000F42C2E /* GameOverViewController.m */,
+				9AB6FA7B1C13B11D00250408 /* CustomZetronTableViewCell.h */,
+				9AB6FA7C1C13B11D00250408 /* CustomZetronTableViewCell.m */,
+				9AB6FA7D1C13B11D00250408 /* CustomZetronTableViewCell.xib */,
 				51FC0E4F1C100A4D006A387C /* MatchMakingPlayerCell.h */,
 				51FC0E501C100A4D006A387C /* MatchMakingPlayerCell.m */,
 				3D39210A1BF11C23003C7C81 /* Main.storyboard */,
@@ -366,7 +374,7 @@
 				TargetAttributes = {
 					3D3920FD1BF11C23003C7C81 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = N2DCZ2U592;
+						DevelopmentTeam = Z368FJ9ZFJ;
 					};
 					3D3921161BF11C23003C7C81 = {
 						CreatedOnToolsVersion = 7.1;
@@ -406,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D2A1E2D1C05170200C57B99 /* SpriteView.xib in Resources */,
+				9AB6FA7F1C13B11D00250408 /* CustomZetronTableViewCell.xib in Resources */,
 				3D2864521BFA74F800C71A31 /* venus rising rg.ttf in Resources */,
 				3D2864501BFA73BD00C71A31 /* blade.ttf in Resources */,
 				3D2864481BF9030200C71A31 /* Launch Screen.storyboard in Resources */,
@@ -474,6 +483,7 @@
 			files = (
 				9ACE71451C0129B000F42C2E /* GameOverViewController.m in Sources */,
 				3D2864551BFA8D4200C71A31 /* RulesViewController.m in Sources */,
+				9AB6FA7E1C13B11D00250408 /* CustomZetronTableViewCell.m in Sources */,
 				3DF4ABB41BF7B3B400A77926 /* PlayerManager.m in Sources */,
 				3D2A1E331C05173400C57B99 /* SpriteView.m in Sources */,
 				51FC0E511C100A4D006A387C /* MatchMakingPlayerCell.m in Sources */,
@@ -626,7 +636,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danieldistant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamaalsedayao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -641,7 +651,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danieldistant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamaalsedayao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
