@@ -27,8 +27,6 @@ UITableViewDataSource
 @property (nonatomic) NSMutableDictionary *readyPlayers;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-
-
 // UI Properties Below
 @property (weak, nonatomic) IBOutlet UIImageView *wallpaperBG;
 @property (weak, nonatomic) IBOutlet UIImageView *borderFrame;
@@ -54,6 +52,10 @@ UITableViewDataSource
     //self.ppMatchmaking.endGameStatus = self.gameEndStatus;
     
     self.reconnectState = ReconnectStateNone;
+    
+    [self animationChangeBGLogo];
+    
+    [self setUpDropShadowSideBar];
     
 }
 
@@ -227,9 +229,6 @@ UITableViewDataSource
     
     return cell;
 }
-
-
-
 
 
 // ** UI BELOW ** //
