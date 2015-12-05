@@ -47,6 +47,8 @@
 
 @property (nonatomic) NSTimer *testTimer;
 
+@property (nonatomic) NSMutableArray *RSSIValues;
+
 @end
 
 
@@ -99,7 +101,7 @@ BOOL alreadyVirus = NO;
     [self.progressView startAnimating];
     
     // Continuously updates the progress value using random values
-//    [self simulateProgress];
+    //    [self simulateProgress];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -117,14 +119,14 @@ BOOL alreadyVirus = NO;
                                                      userInfo:nil
                                                       repeats:YES];
     
-    self.roundTimeLeft = 10;
+    self.roundTimeLeft = 30;
 }
 
 -(void) countDown:(NSTimer *)timer {
     self.roundTimeLeft--;
-//    self.roundTimerLabel.text = [NSString stringWithFormat:@":%.2f",self.roundTimeLeft];
-//    NSLog(@"Round Time Left:%.2f",self.roundTimeLeft);
-
+    //    self.roundTimerLabel.text = [NSString stringWithFormat:@":%.2f",self.roundTimeLeft];
+    //    NSLog(@"Round Time Left:%.2f",self.roundTimeLeft);
+    
     if (self.roundTimeLeft == -1){
         [self.roundTimer invalidate];
         [self pushToGameOverViewController];
@@ -137,16 +139,16 @@ BOOL alreadyVirus = NO;
 #pragma mark
 #pragma mark - Custom Progress Bar
 //- (void)simulateProgress {
-//    
+//
 //    double delayInSeconds = 2.0;
 //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
 //    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//        
+//
 //        CGFloat increment = (arc4random() % 5) / 10.0f + 0.1;
 //        CGFloat progress  = [self.progressView progress] + increment;
 //        [self.progressView setProgress:progress];
 //        if (progress < 1.0) {
-//            
+//
 //            [self simulateProgress];
 //        }
 //    });
@@ -227,7 +229,7 @@ BOOL alreadyVirus = NO;
     self.progressView.clipsToBounds = YES;
     
     [self.centralView addSubview:self.progressView];
-
+    
 }
 
 
@@ -304,7 +306,7 @@ BOOL alreadyVirus = NO;
     }
     
     // The state must be CBCentralManagerStatePoweredOn...
-
+    
     // ... so start scanning
     [self scan];
     
@@ -323,12 +325,12 @@ BOOL alreadyVirus = NO;
 - (void)setUpAdvertisingTimer{
     
     self.scanTimer = [NSTimer timerWithTimeInterval:0.1
-                                                   target:self
-                                                 selector:@selector(fireScanner:)
-                                                 userInfo:nil
-                                                  repeats:YES];
+                                             target:self
+                                           selector:@selector(fireScanner:)
+                                           userInfo:nil
+                                            repeats:YES];
     
-    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];  
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     [runLoop addTimer:self.scanTimer forMode:NSDefaultRunLoopMode];
     
 }
@@ -337,32 +339,41 @@ BOOL alreadyVirus = NO;
     [self.centralManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:TRANSFER_SERVICE_UUID]]
                                                 options:@{ CBCentralManagerScanOptionAllowDuplicatesKey : @YES }];
     
-   // NSLog(@"Scanning!");
+    // NSLog(@"Scanning!");
 }
 
 
 /** This callback comes whenever a peripheral that is advertising the TRANSFER_SERVICE_UUID is discovered.
- *  We check the RSSI, to make sure it's close enough that we're interested in it, and if it is, 
+ *  We check the RSSI, to make sure it's close enough that we're interested in it, and if it is,
  *  we start the connection process
  */
 
 
-
-- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
+- (void)checkRSSIValues {
     
-    if (RSSI.integerValue > -32 && RSSI.integerValue ) {
+    //this isnt holding the numbers, its just coutning the numbers
+    NSInteger countWithinRange = 0;
+    for (NSNumber *RSSINumber in self.RSSIValues) {
+        if (RSSINumber.integerValue > -70) {
+            countWithinRange++;
+        }
+    }
+    CGFloat percentWithinRange = (CGFloat)countWithinRange/self.RSSIValues.count;
+    if (percentWithinRange > 0.9) {
         
         alreadyVirus = YES;
         
-        [self.centralView setBackgroundColor:[UIColor redColor]];
         
-        NSTimer *waitSeconds = [NSTimer scheduledTimerWithTimeInterval:0.8
-                                                                     target:self
-                                                                   selector:@selector(virusUpoloadTime)
-                                                                   userInfo:nil
-                                                                    repeats:NO];
-
+        NSTimer *waitSeconds = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                                target:self
+                                                              selector:@selector(virusUpoloadTime)
+                                                              userInfo:nil
+                                                               repeats:NO];
+        
         if (self.progressView.progress == 1.0){
+            
+            [self.centralView setBackgroundColor:[UIColor redColor]];
+
             [waitSeconds invalidate];
             
             BTLEPeripheralViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"PeripheralID"];
@@ -370,50 +381,78 @@ BOOL alreadyVirus = NO;
             [self presentViewController:viewController animated:YES completion:nil];
             
         }
-        
-    } else if (RSSI.integerValue < -55 && alreadyVirus == NO) {
-        
-        if (self.prevDeciBar == nil && rssiCount == 0){
-            self.prevDeciBar = self.decibelBar;
-            rssiCount = 1;
-        }
-        if (rssiCount == 1){
-            self.nuDeciBar = self.decibelBar;
-            rssiSetNum = YES;
-            rssiCount = 2;
-        }
-        
-        if (self.prevDeciBar != nil && self.nuDeciBar != nil){
-            if (rssiSetNum == YES){
-                NSLog(@"Running Third");
-                self.prevDeciBar = self.decibelBar;
-                rssiSetNum = NO;
-            } else {
-                self.nuDeciBar = self.decibelBar;
-                rssiSetNum = YES;
-            }
-            if (self.nuDeciBar < self.prevDeciBar){
-                self.progressBarIncreasing = YES;
-                [self.progressView setProgress:(self.progressView.progress + 0.09)];
-                [self updateProgressBarLabel];
-                
-            } else if (self.nuDeciBar > self.prevDeciBar){
-                self.progressBarIncreasing = NO;
-                [self.progressView setProgress:(self.progressView.progress - 0.09)];
-                [self updateProgressBarLabel];
-                
-            }
-        }
-        
-        [self.centralView setBackgroundColor:[UIColor yellowColor]];
-        
-    }  else if (RSSI.integerValue < -75 && alreadyVirus == NO) {
-        [self.progressView setProgress:(self.progressView.progress - 0.00)];
-        [self.centralView setBackgroundColor:[UIColor greenColor]];
     }
     
+    NSLog(@"%@ / %@ = %@", @(countWithinRange), @(self.RSSIValues.count), @(percentWithinRange));
+    
+    self.RSSIValues = nil;
+    
+}
 
-    NSLog(@"Discovered %@ at %@", peripheral.name, RSSI);
+
+- (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
+    
+    if (RSSI.integerValue > 0) return;
+    
+    NSLog(@"RSSI %@", RSSI);
+    //-70 dB = about 10 feet
+    if (RSSI.integerValue > -70) { // turn red
+        
+        if (self.RSSIValues == nil) {
+            self.RSSIValues = [[NSMutableArray alloc] init];
+            //how long the checking process will run for: 10 seconds
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                //checks value after three seconds
+                [self checkRSSIValues];
+                
+            });
+        }
+
+            
+            if (self.prevDeciBar == nil && rssiCount == 0){
+                self.prevDeciBar = self.decibelBar;
+                rssiCount = 1;
+            }
+            if (rssiCount == 1){
+                self.nuDeciBar = self.decibelBar;
+                rssiSetNum = YES;
+                rssiCount = 2;
+            }
+            
+            if (self.prevDeciBar != nil && self.nuDeciBar != nil){
+                if (rssiSetNum == YES){
+                    NSLog(@"Running Third");
+                    self.prevDeciBar = self.decibelBar;
+                    rssiSetNum = NO;
+                } else {
+                    self.nuDeciBar = self.decibelBar;
+                    rssiSetNum = YES;
+                }
+                if (self.nuDeciBar < self.prevDeciBar){
+                    self.progressBarIncreasing = YES;
+                    [self.progressView setProgress:(self.progressView.progress + 0.09)];
+                    [self updateProgressBarLabel];
+                    
+                } else if (self.nuDeciBar > self.prevDeciBar){
+                    self.progressBarIncreasing = NO;
+                    [self.progressView setProgress:(self.progressView.progress - 0.09)];
+                    [self updateProgressBarLabel];
+                    
+                }
+            }
+            
+            
+            [self.centralView setBackgroundColor:[UIColor yellowColor]];
+        
+    } else {
+        alreadyVirus = NO;
+        [self.centralView setBackgroundColor:[UIColor greenColor]];
+        [self.progressView setProgress:(self.progressView.progress - 0.00)];
+    }
+    
+    [self.RSSIValues addObject:RSSI];
+    
+    
     
     // Ok, it's in range - have we already seen it?
     if (self.discoveredPeripheral != peripheral) {
@@ -442,10 +481,10 @@ BOOL alreadyVirus = NO;
  */
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
-//    if (self.timerIsOn == NO){
-//        [self startGameTimer];
-//        self.timerIsOn = YES;
-//    }
+    //    if (self.timerIsOn == NO){
+    //        [self startGameTimer];
+    //        self.timerIsOn = YES;
+    //    }
     
     NSLog(@"Peripheral Connected");
     
@@ -455,7 +494,7 @@ BOOL alreadyVirus = NO;
     
     // Clear the data that we may already have
     [self.data setLength:0];
-
+    
     // Make sure we get the discovery callbacks
     peripheral.delegate = self;
     
@@ -500,7 +539,7 @@ BOOL alreadyVirus = NO;
         
         // And check if it's the right one
         if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:TRANSFER_CHARACTERISTIC_UUID]]) {
-     
+            
             // If it is, subscribe to it
             [peripheral setNotifyValue:YES forCharacteristic:characteristic];
         }
@@ -529,25 +568,25 @@ BOOL alreadyVirus = NO;
         //[self.roundTimerLabel setText:[[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding]];
         //NSString* newStr = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
         
-//        if (self.timerIsOn == NO){
-//            NSString *timeString = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
-//            NSTimeInterval timeLeft = [timeString doubleValue] - 1;
-//            self.roundTimeLeft = timeLeft;
-//            [self startGameTimer];
-//            self.timerIsOn = YES;
-//            NSLog(@"Round Timer Started");
-//        }
+        //        if (self.timerIsOn == NO){
+        //            NSString *timeString = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+        //            NSTimeInterval timeLeft = [timeString doubleValue] - 1;
+        //            self.roundTimeLeft = timeLeft;
+        //            [self startGameTimer];
+        //            self.timerIsOn = YES;
+        //            NSLog(@"Round Timer Started");
+        //        }
         
         // Cancel our subscription to the characteristic
         [peripheral setNotifyValue:NO forCharacteristic:characteristic];
         
         // and disconnect from the peripehral
         [self.centralManager cancelPeripheralConnection:peripheral];
-//    } else if ([stringFromData isEqualToString:@"endGame"]){
-//        
-//        [self pushToGameOverViewController];
+        //    } else if ([stringFromData isEqualToString:@"endGame"]){
+        //
+        //        [self pushToGameOverViewController];
     }
-
+    
     // Otherwise, just add the data on to what we already have
     [self.data appendData:characteristic.value];
     
