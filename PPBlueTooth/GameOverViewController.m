@@ -91,6 +91,8 @@ UITableViewDataSource
                                     };
     [self.allConnectedPeers addEntriesFromDictionary:peerAndStatus];
     [self.allConnectedPeers addEntriesFromDictionary:myDictionary];
+    
+    [self.tableView reloadData];
 }
 
 - (void)partyTime:(PPMatchmaking *)partyTime
