@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jks-76-CGy">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -137,7 +138,7 @@
                                     <segue destination="ux0-8C-qBh" kind="modal" id="GRo-3Q-deP"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6531154C-91B7-4A67-BE8F-F1A05E7D0BDB" translatesAutoresizingMaskIntoConstraints="NO" id="KsB-60-PxL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3911A2BE-593D-4DC4-A75C-1EB54E845A51" translatesAutoresizingMaskIntoConstraints="NO" id="KsB-60-PxL">
                                 <rect key="frame" x="40" y="82" width="520" height="437"/>
                                 <animations/>
                                 <constraints>
@@ -387,6 +388,7 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Border" translatesAutoresizingMaskIntoConstraints="NO" id="lVc-ZX-8eG">
                                 <rect key="frame" x="20" y="20" width="560" height="560"/>
+                                <animations/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4z-vf-GIH">
                                 <rect key="frame" x="568" y="20" width="8" height="560"/>
@@ -671,6 +673,7 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Border" translatesAutoresizingMaskIntoConstraints="NO" id="lET-T3-nv6">
                                 <rect key="frame" x="20" y="20" width="560" height="560"/>
+                                <animations/>
                             </imageView>
                             <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1cu-aT-aJG">
                                 <rect key="frame" x="50" y="181" width="500" height="200"/>
@@ -733,6 +736,7 @@
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zetrongameover" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-Nh-jIh">
                                 <rect key="frame" x="180" y="50" width="241" height="91"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="91" id="7fn-Ot-ZO2"/>
                                     <constraint firstAttribute="width" secondItem="ZOm-Nh-jIh" secondAttribute="height" multiplier="241:91" id="dLz-g1-t86"/>
@@ -740,6 +744,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F29-zY-LKV">
                                 <rect key="frame" x="230" y="406" width="140" height="50"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="PCX-Tr-5T7"/>
                                     <constraint firstAttribute="width" secondItem="F29-zY-LKV" secondAttribute="height" multiplier="145:52" id="aQQ-He-ocs"/>
@@ -917,10 +922,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6531154C-91B7-4A67-BE8F-F1A05E7D0BDB" width="547" height="364">
+        <image name="3911A2BE-593D-4DC4-A75C-1EB54E845A51" width="547" height="364">
             <mutableData key="keyedArchiveRepresentation">
-YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
-GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
+YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
+GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
 DBIAwAAAgAKACtISCRMVWk5TLm9iamVjdHOhFIADgAnSEgkXGqIYGYAEgAWACBAA0h0JHh9fEBROU1RJ
 RkZSZXByZXNlbnRhdGlvboAGgAdPEgAMNFZNTQAqAAwnGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -14201,7 +14206,7 @@ AAwnxgEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAAHAAwn6gESAAMAAAABAAEAAAEVAAMAAAAB
 AAQAAAEWAAMAAAABADsAAAEXAAQAAAAHAAwnzgEcAAMAAAABAAEAAAFSAAMAAAABAAIAAAFTAAMAAAAE
 AAwoBodzAAcAAAxIAAwoDgAAAAAACAAIAAgACAAB+EQAAfhEAAH4RAAB+EQAAfhEAAH4RAAAVXgAAAAI
 AAH4TAAD8JAABejUAAfhGAAJ2VwAC9GgAAEAAQABAAEAAAxITGlubwIQAABtbnRyUkdCIFhZWiAHzgAC
-AAkABgAxAABhY3NwTVNGVAAAAABJRUMgc1JHQgAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLUhQICAAAAAA
+AAkABgAxAABhY3NwTVNGVAAAAABJRUMgc1JHQgAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLUhQICAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABFjcHJ0AAABUAAAADNkZXNj
 AAABhAAAAGx3dHB0AAAB8AAAABRia3B0AAACBAAAABRyWFlaAAACGAAAABRnWFlaAAACLAAAABRiWFla
 AAACQAAAABRkbW5kAAACVAAAAHBkbWRkAAACxAAAAIh2dWVkAAADTAAAAIZ2aWV3AAAD1AAAACRsdW1p
@@ -14253,15 +14258,15 @@ wl/C28NYw9TEUcTOxUvFyMZGxsPHQce/yD3IvMk6ybnKOMq3yzbLtsw1zLXNNc21zjbOts83z7jQOdC6
 0TzRvtI/0sHTRNPG1EnUy9VO1dHWVdbY11zX4Nhk2OjZbNnx2nba+9uA3AXcit0Q3ZbeHN6i3ynfr+A2
 4L3hROHM4lPi2+Nj4+vkc+T85YTmDeaW5x/nqegy6LzpRunQ6lvq5etw6/vshu0R7ZzuKO6070DvzPBY
 8OXxcvH/8ozzGfOn9DT0wvVQ9d72bfb794r4Gfio+Tj5x/pX+uf7d/wH/Jj9Kf26/kv+3P9t///SIiMk
-JVokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNCaXRtYXBJbWFnZVJlcKMmJyhfEBBOU0JpdG1hcEltYWdl
-UmVwWk5TSW1hZ2VSZXBYTlNPYmplY3TSIiMqK1dOU0FycmF5oioo0iIjLS5eTlNNdXRhYmxlQXJyYXmj
-LSoo0zAxCTIzNFdOU1doaXRlXE5TQ29sb3JTcGFjZUQwIDAAEAOAC9IiIzY3V05TQ29sb3KiNijSIiM5
-OldOU0ltYWdlojkoXxAPTlNLZXllZEFyY2hpdmVy0T0+VHJvb3SAAQAAAAgAAAARAAAAGgAAACMAAAAt
-AAAAMgAAADcAAABFAAAASwAAAFQAAABbAAAAaAAAAG8AAAB3AAAAeQAAAH4AAACAAAAAggAAAIcAAACS
-AAAAlAAAAJYAAACYAAAAnQAAAKAAAACiAAAApAAAAKYAAACoAAAArQAAAMQAAADGAAAAyAAMNSQADDUp
-AAw1NAAMNT0ADDVQAAw1VAAMNWcADDVyAAw1ewAMNYAADDWIAAw1iwAMNZAADDWfAAw1owAMNaoADDWy
-AAw1vwAMNcQADDXGAAw1yAAMNc0ADDXVAAw12AAMNd0ADDXlAAw16AAMNfoADDX9AAw2AgAAAAAAAAQB
-AAAAAAAAAD8AAAAAAAAAAAAAAAAADDYEA
+JVokY2xhc3NuYW1lWCRjbGFzc2VzXxAQTlNCaXRtYXBJbWFnZVJlcKMkJidaTlNJbWFnZVJlcFhOU09i
+amVjdNIiIykqV05TQXJyYXmiKSfSIiMsLV5OU011dGFibGVBcnJheaMsKSfTLzAJMTIzV05TV2hpdGVc
+TlNDb2xvclNwYWNlRDAgMAAQA4AL0iIjNTZXTlNDb2xvcqI1J9IiIzg5V05TSW1hZ2WiOCdfEA9OU0tl
+eWVkQXJjaGl2ZXLRPD1Ucm9vdIABAAAACAAAABEAAAAaAAAAIwAAAC0AAAAyAAAANwAAAEUAAABLAAAA
+VAAAAFsAAABoAAAAbwAAAHcAAAB5AAAAfgAAAIAAAACCAAAAhwAAAJIAAACUAAAAlgAAAJgAAACdAAAA
+oAAAAKIAAACkAAAApgAAAKgAAACtAAAAxAAAAMYAAADIAAw1JAAMNSkADDU0AAw1PQAMNVAADDVUAAw1
+XwAMNWgADDVtAAw1dQAMNXgADDV9AAw1jAAMNZAADDWXAAw1nwAMNawADDWxAAw1swAMNbUADDW6AAw1
+wgAMNcUADDXKAAw10gAMNdUADDXnAAw16gAMNe8AAAAAAAAEAQAAAAAAAAA+AAAAAAAAAAAAAAAAAAw1
+8Q
 </mutableData>
         </image>
         <image name="Border" width="1080" height="1920"/>

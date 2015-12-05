@@ -55,7 +55,7 @@
     // Setup Advertising Timer
     //[self setUpAdvertisingTimer];
     
-    [self setupPlayerView];
+    //[self setupPlayerView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

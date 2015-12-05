@@ -59,19 +59,6 @@ UITableViewDataSource
     
 }
 
-- (void)showEndGameStatus {
-    if ([self.gameEndStatus isEqualToString:@"central"]){
-        self.gameEndLabel.text = @"You have survived The Zetron Virus!";
-        self.gameEndLabel.textColor = [UIColor greenColor];
-        
-    } else if ([self.gameEndStatus isEqualToString:@"peripheral"]){
-        
-        self.gameEndLabel.text = @"Zetron!!! Continue To Infect Benign Systems!";
-        self.gameEndLabel.textColor = [UIColor redColor];
-    }
-    
-}
-
 #pragma mark 
 #pragma mark - Reconnect Peers in PPMatchmaking
 
@@ -93,23 +80,17 @@ UITableViewDataSource
 - (void)partyTime:(PPMatchmaking *)partyTime
    didReceiveData:(NSData *)data
          fromPeer:(MCPeerID *)peerID {
-    
     NSLog(@"Message received From Peer: %@",peerID);
-//    
-//    NSDictionary *myDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:data error:nil];
-//    MCPeerID *virusID = [myDictionary valueForKey:@"VirusID"];
-//    
-//    if (!virusID) return;
-//    
-//    [self makePeerReady:peerID];
-//    
-//    NSLog(@"Received Data: %@", virusID);
-//    
-//    //[self.collectionView reloadData];
-//    
-//    NSLog(@"Received some data!");
+    
+    NSDictionary *myDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:data error:nil];
+    //MCPeerID *virusID = [myDictionary valueForKey:@"VirusID"];
     
     
+    NSDictionary *peerAndStatus = @{
+                                    self.ppMatchmaking.peerID.displayName:self.gameEndStatus
+                                    };
+    [self.allConnectedPeers addEntriesFromDictionary:peerAndStatus];
+    [self.allConnectedPeers addEntriesFromDictionary:myDictionary];
 }
 
 - (void)partyTime:(PPMatchmaking *)partyTime
@@ -120,17 +101,9 @@ UITableViewDataSource
     
     if (state == MCSessionStateConnected) {
         NSLog(@"Connected to %@", peer.displayName);
-        
-        //if (![currentPeers containsObject:peer]){
-        NSDictionary *peerAndStatus = @{
-                                   peer.displayName:gameStatus
-                                        };
-        
-        [self.allConnectedPeers addEntriesFromDictionary:peerAndStatus];
-            
-        NSLog(@"Self.allConnectedPeers:%@",self.allConnectedPeers);
-        //[self makePeerReady:peer];
-        //[self checkReady];
+        [self sendMessageToPeers];
+        [self makePeerReady:peer];
+        [self checkReady];
     }
     else {
         NSLog(@"Peer disconnected: %@", peer.displayName);

@@ -79,9 +79,9 @@ BOOL alreadyVirus = NO;
     
     [self startGameTimer];
     
-    [self loadProgressBar];
+    //[self loadProgressBar];
     
-    [self setupPlayerView];
+    //[self setupPlayerView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -344,7 +344,7 @@ BOOL alreadyVirus = NO;
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
     
-    if (RSSI.integerValue > -32) {
+    if (RSSI.integerValue > -32 && RSSI.integerValue ) {
         
         alreadyVirus = YES;
         
