@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @import MultipeerConnectivity;
 
@@ -17,6 +18,10 @@ extern NSString * const ppService;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (nonatomic) AVAudioPlayer *audioPlayerStartMusic;
+
+@property (nonatomic) AVAudioPlayer *audioPlayerGameMusic;
 
 @end
 

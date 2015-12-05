@@ -59,6 +59,27 @@ UITableViewDataSource
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [self createGatherAlert];
+}
+
+- (void) createGatherAlert {
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Game results"
+                                                                   message:@"Gather all players"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              
+                                                              [self sendMessageToPeers];
+                                                          }];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 #pragma mark 
 #pragma mark - Reconnect Peers in PPMatchmaking
 
@@ -68,11 +89,17 @@ UITableViewDataSource
     
 }
 - (void)partyTime:(PPMatchmaking *)partyTime failedToJoinParty:(NSError *)error {
-    [[[UIAlertView alloc] initWithTitle:@"Error"
-                                message:[error localizedFailureReason]
-                               delegate:nil
-                      cancelButtonTitle:@"OK"
-                      otherButtonTitles:nil] show];
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                   message:[error localizedFailureReason]
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 #pragma mark
@@ -103,7 +130,6 @@ UITableViewDataSource
     
     if (state == MCSessionStateConnected) {
         NSLog(@"Connected to %@", peer.displayName);
-        [self sendMessageToPeers];
         [self makePeerReady:peer];
         [self checkReady];
     }

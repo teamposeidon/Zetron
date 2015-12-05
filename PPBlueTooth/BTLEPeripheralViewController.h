@@ -6,6 +6,7 @@
 #import <SpriteKit/SpriteKit.h>
 #import "PlayerScene.h"
 #import "PlayerView.h"
+#import "AppDelegate.h"
 
 @interface BTLEPeripheralViewController : UIViewController
 
