@@ -10,6 +10,12 @@
 
 @interface RulesViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *gotItButton;
+@property (weak, nonatomic) IBOutlet UIImageView *borderFrame;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+
+// Timer for Shadow
+@property (nonatomic) BOOL countDown;
+@property (nonatomic) double counter;
 
 @end
 
@@ -27,6 +33,9 @@
     // Do any additional setup after loading the view.
     
     [self setupSpriteView];
+    
+    // Setup drop shadow
+    [self setUpDropShadowSideBar];
 
 }
 
@@ -61,6 +70,80 @@
 }
 - (IBAction)doneRulesButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark
+#pragma mark - Drop Shadow Side Bar
+- (void)setUpDropShadowSideBar {
+    
+    // Side Bar Timer Animation
+    
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:0.09
+                                                  target:self
+                                                selector:@selector(updateShadowTimer)
+                                                userInfo:nil
+                                                 repeats:YES];
+    
+    [timer fire];
+    
+    self.counter = 2.0;
+    self.countDown = NO;
+    
+    // Side Bar Setup Drop Shadow
+    [self dropShadowSideBar:self.borderFrame];
+    
+    // Setup the background animation
+    [self animationChangeBGLogo];
+}
+
+- (void)dropShadowSideBar:(UIView *)glowView {
+    glowView.layer.masksToBounds = NO;
+    glowView.layer.shadowColor = [UIColor yellowColor].CGColor;
+    glowView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+    glowView.layer.shadowRadius = 10.0f;
+    glowView.layer.shadowOpacity = 1.0f;
+}
+
+- (void)updateShadowTimer {
+    NSString *num = [NSString stringWithFormat:@"0.%f",self.counter];
+    float opacity = [num floatValue];
+    
+    if (self.countDown == NO){
+        self.counter++;
+        if (self.counter == 9) {
+            
+            self.countDown = YES;
+        }
+    } else if (self.countDown == YES){
+        self.counter--;
+        if (self.counter == 2){
+            self.countDown = NO;
+        }
+    }
+    
+    self.borderFrame.layer.shadowOpacity = opacity;
+}
+
+#pragma mark
+#pragma mark - Show Animation BG
+- (void)animationChangeBGLogo {
+    NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+    
+    for (int i = 0; i < 8; i++){
+        NSString *object = [NSString stringWithFormat:@"tmp-%d", i];
+        [tempArray addObject:[UIImage imageNamed:object]];
+    }
+    
+    NSArray *animationFrames = [NSArray arrayWithArray:tempArray];
+    
+    
+    self.backgroundView.animationDuration = 0.6;
+    self.backgroundView.animationImages = animationFrames;
+    
+    //    [self.view addSubview:self.zetronMainLogo];
+    [self.backgroundView startAnimating];
+    
 }
 
 /*
