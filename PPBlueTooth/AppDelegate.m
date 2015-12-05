@@ -34,6 +34,23 @@ NSString * const ppService = @"poseidon-team";
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    //audio players
+    
+    NSURL *startMusicURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"GlassCandy"  ofType:@"mp3"]];
+    
+    self.audioPlayerStartMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:startMusicURL error:nil];
+    
+    self.audioPlayerStartMusic.numberOfLoops = -1;
+    
+    [self.audioPlayerStartMusic play];
+    
+    NSURL *gameMusicURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LazerhawkOverdrive" ofType:@"mp3"]];
+    
+    self.audioPlayerGameMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:gameMusicURL error:nil];
+    
+    self.audioPlayerGameMusic.numberOfLoops = -1;
+    
+    
       return YES;
 }
 

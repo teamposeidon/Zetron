@@ -70,6 +70,14 @@
     }
     
     [self startGameTimer];
+    
+    //sound
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    [appDelegate.audioPlayerStartMusic stop];
+    
+    [appDelegate.audioPlayerGameMusic play];
 
 }
 

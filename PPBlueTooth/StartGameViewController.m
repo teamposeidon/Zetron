@@ -44,7 +44,7 @@
 @property (nonatomic, strong) NSMutableArray<MCPeerID *> *centralIDs;
 
 //Sound
-@property (nonatomic) AVAudioPlayer *play;
+@property (nonatomic) AVAudioPlayer *audioPlayer;
 
 //assigning Virus properties
 @property (nonatomic) MCPeerID *localVirusRandomSelection;  //this is the random virus chosen by each phone
@@ -127,7 +127,7 @@
     self.session.delegate = self;
 
     // Music Setup
-    [self musicBackGround];
+//    [self musicBackGround];
     
     // Main Logo Setup
     [self animationChangeMainLogo];
@@ -142,8 +142,8 @@
 - (void) musicBackGround {
     NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"GlassCandy"  ofType:@"mp3"]];
     
-    self.play = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-    [self.play play];
+    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+    [self.audioPlayer play];
 }
 
 #pragma mark
@@ -288,11 +288,11 @@
 //     ^{
         if ([self.player.zitronUserName rangeOfString:@"virus"].location == NSNotFound) {
             NSLog(@"string does not contain virus");
-            [self.play stop];
+            [self.audioPlayer stop];
            // [self pushToCentral];
         } else {
             NSLog(@"string contains virus!");
-            [self.play stop];
+            [self.audioPlayer stop];
            // [self pushToPeripheral];
         }
     }];
@@ -325,7 +325,7 @@
 #pragma mark - Start Game
 - (IBAction)startGameButtonTapped:(UIButton *)sender {
     //stops song
-    [self.play stop];
+//    [self.audioPlayer stop];
     
     //checks if this device's peerID matches that of the peerVirusConfirmed's peerID
     //if ([self.session.myPeerID.displayName isEqualToString:self.peerVirusConfirmed.displayName]){

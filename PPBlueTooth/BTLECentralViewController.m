@@ -8,6 +8,7 @@
 #import "BTLEPeripheralViewController.h"
 #import "Parse.h"
 
+
 #import "TransferService.h"
 
 @interface BTLECentralViewController () <CBCentralManagerDelegate, CBPeripheralDelegate>
@@ -85,9 +86,14 @@ BOOL alreadyVirus = NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LazerhawkOverdrive" ofType:@"mp3"]];
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-    [self.player play];
+    
+    //sound
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    [appDelegate.audioPlayerStartMusic stop];
+    
+    [appDelegate.audioPlayerGameMusic play];
     
     // Starts the moving gradient effect
     [self.progressView startAnimating];
