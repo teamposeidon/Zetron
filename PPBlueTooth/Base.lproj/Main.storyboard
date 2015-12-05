@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ux0-8C-qBh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9046" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kad-MV-7QJ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9035"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -137,7 +137,7 @@
                                     <segue destination="ux0-8C-qBh" kind="modal" id="GRo-3Q-deP"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="44C7501F-2C4B-49C5-A223-40B612921116" translatesAutoresizingMaskIntoConstraints="NO" id="KsB-60-PxL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7BB7BCDB-98D2-4136-BF4C-46DF05829609" translatesAutoresizingMaskIntoConstraints="NO" id="KsB-60-PxL">
                                 <rect key="frame" x="40" y="82" width="520" height="437"/>
                                 <animations/>
                                 <constraints>
@@ -777,8 +777,10 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="borderFrame" destination="lET-T3-nv6" id="TmK-c1-dJ6"/>
                         <outlet property="gameResultsView" destination="1cu-aT-aJG" id="bPH-13-U4E"/>
                         <outlet property="tableView" destination="0us-g1-2v9" id="vrH-Cw-LUc"/>
+                        <outlet property="wallpaperBG" destination="k0i-R5-EJ7" id="uh3-XE-z56"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YV1-Gi-qjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -915,7 +917,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="44C7501F-2C4B-49C5-A223-40B612921116" width="547" height="364">
+        <image name="7BB7BCDB-98D2-4136-BF4C-46DF05829609" width="547" height="364">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
