@@ -181,12 +181,12 @@
 
 - (void) createZetronRunnerRedNodeWithAnimation {
     
-    self.viralRunner = [SKSpriteNode spriteNodeWithImageNamed:@"ZetronRunnerRed1"];
+    self.viralRunner = [SKSpriteNode spriteNodeWithImageNamed:@"zetronRunnerRed1"];
     self.viralRunner.size = CGSizeMake(140, 140);
     self.viralRunner.position = CGPointMake(170, 50);
     
-    SKTexture *texture1 = [SKTexture textureWithImageNamed:@"ZetronRunnerRed2"];
-    SKTexture *texture2 = [SKTexture textureWithImageNamed:@"ZetronRunnerRed1"];
+    SKTexture *texture1 = [SKTexture textureWithImageNamed:@"zetronRunnerRed2"];
+    SKTexture *texture2 = [SKTexture textureWithImageNamed:@"zetronRunnerRed1"];
     
     SKAction *animation = [SKAction animateWithTextures:@[texture2, texture1] timePerFrame:0.2];
     
@@ -199,8 +199,8 @@
 
 - (void) moveZetronRunnerRight {
     
-    SKTexture *texture1 = [SKTexture textureWithImageNamed:@"ZetronRunnerRed2"];
-    SKTexture *texture2 = [SKTexture textureWithImageNamed:@"ZetronRunnerRed1"];
+    SKTexture *texture1 = [SKTexture textureWithImageNamed:@"zetronRunnerRed2"];
+    SKTexture *texture2 = [SKTexture textureWithImageNamed:@"zetronRunnerRed1"];
     
     SKAction *animation = [SKAction animateWithTextures:@[texture2, texture1] timePerFrame:0.2];
     
