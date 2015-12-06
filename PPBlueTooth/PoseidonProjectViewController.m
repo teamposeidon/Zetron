@@ -8,11 +8,12 @@
 
 #import "PoseidonProjectViewController.h"
 #import "StartScreenVC.h"
+#import "UIImage+GIF.h"
 
 @interface PoseidonProjectViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *poseidonLogo;
 @property (weak, nonatomic) IBOutlet UIImageView *projectLogo;
-@property (weak, nonatomic) IBOutlet UIWebView *ppLogoWebView;
+@property (weak, nonatomic) IBOutlet UIImageView *gifView;
 @property (nonatomic) NSString *pathImage;
 @property (weak, nonatomic) IBOutlet UIView *ppLogoOneView;
 @property (weak, nonatomic) IBOutlet UIView *ppLogoTwoView;
@@ -63,24 +64,39 @@
 - (void)settingTheAnimatedBackground {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"poseidon" ofType:@"gif"];
     NSData *gif = [NSData dataWithContentsOfFile:filePath];
-    UIWebView *webViewBG = [[UIWebView alloc] initWithFrame:self.view.frame];
-    NSURL *nullURL = nil;
-    NSString *nullEncodingName = nil;
     
-    [webViewBG loadData:gif
-               MIMEType:@"image/gif"
-       textEncodingName:nullEncodingName
-                baseURL:nullURL];
+    //create gif via UIWebView, white square though
+    
+    //    UIWebView *webViewBG = [[UIWebView alloc] initWithFrame:self.view.frame];
+    //
+    //    NSURL *nullURL = nil;
+    //    NSString *nullEncodingName = nil;
+    //
+    //    [webViewBG loadData:gif
+    //               MIMEType:@"image/gif"
+    //       textEncodingName:nullEncodingName
+    //                baseURL:nullURL];
+    //
+    //    webViewBG.userInteractionEnabled = NO;
+    
     NSInteger height = 300;
     NSInteger heightPosition = self.view.frame.size.height - height + 50;
-    webViewBG.userInteractionEnabled = NO;
-    self.ppLogoWebView = webViewBG;
-    self.ppLogoWebView.frame = CGRectMake(0.0,
-                                        heightPosition,
-                                          self.view.frame.size.width,
-                                          height);
     
-    [self.view addSubview:self.ppLogoWebView];
+    //    webViewBG.frame = CGRectMake(0.0, heightPosition, self.view.frame.size.width, height);
+    
+    UIImageView *gifContainerView = [[UIImageView alloc] initWithFrame:self.view.frame];
+    gifContainerView.backgroundColor = [UIColor clearColor];
+    
+    
+    self.gifView = gifContainerView;
+    self.gifView.frame = CGRectMake(0.0,
+                                    heightPosition,
+                                    self.view.frame.size.width + 60,
+                                    height + 28);
+    
+    self.gifView.image = [UIImage sd_animatedGIFWithData:gif];
+    
+    [self.view addSubview:self.gifView];
 }
 
 -(void)showAnimation {
