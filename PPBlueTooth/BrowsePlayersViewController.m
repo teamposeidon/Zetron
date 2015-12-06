@@ -375,7 +375,7 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 #pragma mark - Assigning Peripheral
 -(void)assignVirusPeripheral{
     
-    self.allConnectedPeers = [[NSMutableArray alloc]initWithArray:self.ppMatchmaking.connectedPeers];
+    self.allConnectedPeers = [[[NSMutableArray alloc]initWithArray:self.ppMatchmaking.connectedPeers]initWithCapacity:4];
     [self.allConnectedPeers addObject:self.ppMatchmaking.peerID];
     
     NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self.allConnectedPeers];
