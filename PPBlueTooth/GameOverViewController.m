@@ -34,18 +34,25 @@ UITableViewDataSource
 @property (nonatomic) BOOL countDown;
 @property (nonatomic) double counter;
 
+@property (nonatomic) AppDelegate *appDelegate;
+@property (nonatomic,strong) NSTimer *messageTimer;
+
+
 @end
 
 @implementation GameOverViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
     self.gameResultsView.layer.cornerRadius = 4.0f;
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.allConnectedPeers = [[NSMutableDictionary alloc]init];
+    self.allConnectedPeers = [[NSMutableDictionary alloc]initWithCapacity:4];
     self.readyPlayers = [[NSMutableDictionary alloc]init];
     
     [self matchmakingLoad];
@@ -62,7 +69,7 @@ UITableViewDataSource
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    //[self createGatherAlert];
+    [self createGatherAlert];
 }
 
 - (void) createGatherAlert {
@@ -73,7 +80,7 @@ UITableViewDataSource
     
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
-                                                              
+                                                    
                                                               [self sendMessageToPeers];
                                                           }];
     
@@ -85,7 +92,7 @@ UITableViewDataSource
 #pragma mark - Reconnect Peers in PPMatchmaking
 
 - (void)matchmakingLoad {
-    self.ppMatchmaking = [[PPMatchmaking alloc] initWithServiceType:ppService];
+    self.ppMatchmaking = [[PPMatchmaking alloc] initWithServiceType:self.appDelegate.ppService];
     self.ppMatchmaking.delegate = self;
     
 }
@@ -96,7 +103,11 @@ UITableViewDataSource
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
+                                                          handler:^(UIAlertAction * action) {
+                                                          
+                                                              [self fireMessageTimer];
+                                                          
+                                                          }];
     
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
@@ -131,7 +142,7 @@ UITableViewDataSource
     
     if (state == MCSessionStateConnected) {
         NSLog(@"Connected to %@", peer.displayName);
-        [self sendMessageToPeers];
+        [self fireMessageTimer];
         [self makePeerReady:peer];
         [self checkReady];
     }
@@ -143,19 +154,34 @@ UITableViewDataSource
     [self.tableView reloadData];
     
 }
+- (void)fireMessageTimer{
+    
+    self.messageTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                             target:self
+                                                           selector:@selector(sendMessageToPeers)
+                                                           userInfo:nil
+                                                            repeats:YES];
+    
+    [self.tableView reloadData];
+    //[[NSRunLoop mainRunLoop] addTimer:self.messageTimer forMode:NSRunLoopCommonModes];
+    
+    
+}
 - (void)sendMessageToPeers {
     
     NSError *error = nil;
     NSDictionary *endGameStatus = @{
                               self.ppMatchmaking.peerID.displayName:self.gameEndStatus};
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:endGameStatus];
-    
+
     [self.ppMatchmaking sendData:data
                          toPeers:self.ppMatchmaking.connectedPeers
                         withMode:MCSessionSendDataReliable
                            error:&error];
+    NSLog(@"Fire");
     
-    NSLog(@"Data Sent: %@",data);
+    [self.tableView reloadData];
+    //NSLog(@"Data Sent: %@",data);
     
 }
 

@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, BrowseState) {
     BrowseStateCountdown
 };
 
-@interface BrowsePlayersViewController ()<PPMatchmakingDelegate, UICollectionViewDataSource>
+@interface BrowsePlayersViewController ()<PPMatchmakingDelegate, UICollectionViewDataSource, UITextFieldDelegate>
 
 // Public Properties
 @property (nonatomic, strong) PPMatchmaking *ppMatchmaking;
@@ -49,6 +49,7 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 @property (strong, nonatomic) IBOutlet UIButton *startGameButton;
 @property (weak, nonatomic) IBOutlet UIImageView *borderFrame;
 @property (strong, nonatomic) IBOutlet UILabel *countdownLabel;
+@property (nonatomic, strong) UIAlertAction *ok;
 
 // Timer for Shadow
 @property (nonatomic) NSTimer *timer;
@@ -65,9 +66,69 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 @property (nonatomic) NSTimeInterval countdownTimeLeft;
 @property (nonatomic) NSTimer *countdownTimer;
 
+// App Delegate
+@property (nonatomic) AppDelegate *appDelegate;
+@property (nonatomic) NSString *serverName;
+
+@property (nonatomic,strong) UIAlertController *alertController;
+
 @end
 
 @implementation BrowsePlayersViewController
+
+
+
+#pragma mark
+#pragma mark - Life Cycle
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    // Show the alert controller
+    [self alertControllerShow];
+}
+
+#pragma mark
+#pragma mark - Alert Controller User Name
+- (void)alertControllerShow{
+     self.alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Z E T R O N"
+                                          message:@"Enter Server Name:"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    // Alert Message - OK Button
+    self.ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        // This will add the server room
+        self.appDelegate.ppService = self.alertController.textFields.firstObject.text;
+        self.serverName = self.appDelegate.ppService;
+        
+        // Load matchmaking
+        [self matchmakingLoad];
+        
+        
+    }];
+    
+    // Alert Message - Cancel Button
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        NSLog(@"Cancel");
+    }];
+    
+    self.ok.enabled = NO;
+    
+    __weak typeof(self) weakSelf = self;
+    [self.alertController addAction:self.ok];
+    [self.alertController addAction:cancel];
+    [self.alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Server Name";
+        [textField addTarget:weakSelf action:@selector(textfieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
+    }];
+
+    [self presentViewController:self.alertController animated:YES completion:nil];
+    
+}
+
+- (void)textfieldValueChanged:(UITextField *)textField {
+    self.ok.enabled = textField.text.length > 0;
+}
 
 #pragma mark
 #pragma mark - Drop Shadow Side Bar
@@ -151,15 +212,13 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Setup Drop Shadow
     [self setUpDropShadowSideBar];
     
-    // Load matchmaking
-    [self matchmakingLoad];
+    self.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     // Allocate players array
-    self.players = [[NSMutableArray alloc]init];
+    self.players = [[NSMutableArray alloc]initWithCapacity:4];
     self.readyPlayers = [[NSMutableDictionary alloc]init];
     
     // Load BG
@@ -196,7 +255,7 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 #pragma mark 
 #pragma mark Matchmakign Setup
 - (void)matchmakingLoad {
-    self.ppMatchmaking = [[PPMatchmaking alloc] initWithServiceType:ppService];
+    self.ppMatchmaking = [[PPMatchmaking alloc] initWithServiceType:self.appDelegate.ppService];
     self.ppMatchmaking.delegate = self;
     
 }
@@ -361,7 +420,7 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 #pragma mark - Game Screen Segue
 -(void)pushToCentral {
     BTLECentralViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"CentralID"];
-    viewController.session = self.session;
+    viewController.serverName = self.serverName;
     [self presentViewController:viewController animated:YES completion:nil];
     
     NSLog(@"Healthy (central)");
@@ -369,7 +428,7 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 
 - (void)pushToPeripheral {
     BTLEPeripheralViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"PeripheralID"];
-    viewController.session = self.session;
+    viewController.serverName = self.serverName;
     [self presentViewController:viewController animated:YES completion:nil];
     
     NSLog(@"Virus!(peripheral)");

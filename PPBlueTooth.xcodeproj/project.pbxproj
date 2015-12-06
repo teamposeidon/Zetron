@@ -377,7 +377,7 @@
 				TargetAttributes = {
 					3D3920FD1BF11C23003C7C81 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = N2DCZ2U592;
+						DevelopmentTeam = Z368FJ9ZFJ;
 					};
 					3D3921161BF11C23003C7C81 = {
 						CreatedOnToolsVersion = 7.1;
@@ -640,7 +640,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danieldistant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamaalsedayao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -655,7 +655,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danieldistant;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jamaalsedayao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

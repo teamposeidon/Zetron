@@ -20,6 +20,7 @@
 @property (nonatomic, strong) MCSession *session;
 @property (nonatomic) PPMatchmaking *ppMatchmaking;
 @property (nonatomic) GradientProgressView *progressView;
+@property (nonatomic) NSString *serverName;
 
 
 @end

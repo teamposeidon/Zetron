@@ -93,8 +93,8 @@
     //MCPeerID *peerId = [[MCPeerID alloc]initWithDisplayName:self.player.zitronUserName];
     
     self.session = [[MCSession alloc]initWithPeer:self.player.mcPeerID];
-    self.advertiser = [[MCAdvertiserAssistant alloc]initWithServiceType:ppService discoveryInfo:nil session:self.session];
-    
+//    self.advertiser = [[MCAdvertiserAssistant alloc]initWithServiceType:ppService discoveryInfo:nil session:self.session];
+//    
     [self.advertiser start];
 }
 
@@ -107,8 +107,8 @@
 - (void)requireDeviceConnected
 {
     if (self.session.connectedPeers.count == 0) {
-        self.browserController
-        = [[MCBrowserViewController alloc] initWithServiceType:ppService session:self.session];
+        self.browserController;
+       // = [[MCBrowserViewController alloc] initWithServiceType:ppService session:self.session];
         self.browserController.delegate = self;
         self.backgroundButton.enabled = YES;
         [self presentViewController:self.browserController animated:YES completion:nil];

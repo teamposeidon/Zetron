@@ -20,5 +20,6 @@
 @property (nonatomic,strong) MCSession *session;
 @property (nonatomic) PPMatchmaking *ppMatchmaking;
 @property (nonatomic) NSString *timeLeftContinued;
+@property (nonatomic) NSString *serverName;
 
 @end

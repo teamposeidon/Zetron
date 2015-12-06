@@ -107,6 +107,8 @@
     
     [super viewDidLoad];
     
+    
+    
     //hide start game button & releaseVirus button
     self.startGameButton.hidden = YES;
     self.startGameButton.enabled = NO;
@@ -199,71 +201,71 @@
 //    }
 }
 
-#pragma mark
-#pragma mark - Alert Controller User Name
-- (void)alertControllerShow{
-    UIAlertController *alertController = [UIAlertController
-                                          alertControllerWithTitle:@"Z E T R O N"
-                                          message:@"Enter Name"
-                                          preferredStyle:UIAlertControllerStyleAlert];
-    
-    // Alert Message - OK Button
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        self.player.userName = alertController.textFields.firstObject.text;
-        
-        self.player.zitronUserName = [NSString stringWithFormat:@"Zitron-%@",self.player.userName];
-        
-        [self runAdvertiser];
-        
-        [self.data.player addObject:self.player];
-        
-        [self requireDeviceConnected];
-        
-    }];
-    
-    // Alert Message - Cancel Button
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        NSLog(@"Cancel");
-    }];
-    
-    [alertController addAction:ok];
-    [alertController addAction:cancel];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"Username";
-    }];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-}
+//#pragma mark
+//#pragma mark - Alert Controller User Name
+//- (void)alertControllerShow{
+//    UIAlertController *alertController = [UIAlertController
+//                                          alertControllerWithTitle:@"Z E T R O N"
+//                                          message:@"Enter Name"
+//                                          preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    // Alert Message - OK Button
+//    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        self.player.userName = alertController.textFields.firstObject.text;
+//        
+//        self.player.zitronUserName = [NSString stringWithFormat:@"Zitron-%@",self.player.userName];
+//        
+//        [self runAdvertiser];
+//        
+//        [self.data.player addObject:self.player];
+//        
+//        [self requireDeviceConnected];
+//        
+//    }];
+//    
+//    // Alert Message - Cancel Button
+//    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//        NSLog(@"Cancel");
+//    }];
+//    
+//    [alertController addAction:ok];
+//    [alertController addAction:cancel];
+//    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+//        textField.placeholder = @"Username";
+//    }];
+//    
+//    [self presentViewController:alertController animated:YES completion:nil];
+//}
 
 
-#pragma mark
-#pragma mark - Run Advertiser
-- (void)runAdvertiser {
-    
-    self.player.mcPeerID = [[MCPeerID alloc]initWithDisplayName:self.player.zitronUserName];
-    self.session = [[MCSession alloc]initWithPeer:self.player.mcPeerID];
-    self.advertiser = [[MCAdvertiserAssistant alloc]initWithServiceType:ppService discoveryInfo:nil session:self.session];
-     self.session.delegate = self;
-    
-    [self.advertiser start];
-}
+//#pragma mark
+//#pragma mark - Run Advertiser
+//- (void)runAdvertiser {
+//    
+//    self.player.mcPeerID = [[MCPeerID alloc]initWithDisplayName:self.player.zitronUserName];
+//    self.session = [[MCSession alloc]initWithPeer:self.player.mcPeerID];
+//    self.advertiser = [[MCAdvertiserAssistant alloc]initWithServiceType:ppService discoveryInfo:nil session:self.session];
+//     self.session.delegate = self;
+//    
+//    [self.advertiser start];
+//}
 
-#pragma mark
-#pragma mark - Convenience methods
-- (void)requireDeviceConnected {
-    if (self.session.connectedPeers.count == 0) {
-        self.browserController
-        = [[MCBrowserViewController alloc] initWithServiceType:ppService session:self.session];
-        self.browserController.delegate = self;
-
-        
-        BrowsePlayersViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"BrowserPlayersID"];
-        viewController.session = self.session;
-        [self presentViewController:viewController animated:YES completion:nil];
-    }
-    else {
-    }
-}
+//#pragma mark
+//#pragma mark - Convenience methods
+//- (void)requireDeviceConnected {
+//    if (self.session.connectedPeers.count == 0) {
+//        self.browserController
+//        = [[MCBrowserViewController alloc] initWithServiceType:ppService session:self.session];
+//        self.browserController.delegate = self;
+//
+//        
+//        BrowsePlayersViewController *viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"BrowserPlayersID"];
+//        viewController.session = self.session;
+//        [self presentViewController:viewController animated:YES completion:nil];
+//    }
+//    else {
+//    }
+//}
 
 #pragma mark
 #pragma mark - MCBrowserViewControllerDelegate

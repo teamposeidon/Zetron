@@ -47,9 +47,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
     // Start up the CBPeripheralManager
+    // if it matches our server name saved in Appdelegate then a central manager will be createdf
+    
+    if ([appDelegate.ppService isEqualToString:self.serverName]){
+    
     _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
+    
+    }
     
     // Draw Circle
     [self drawCircle];
@@ -119,7 +127,7 @@
                                                       repeats:YES];
     
     if (self.timeLeftContinued == nil) {
-        self.roundTimeLeft = 10;
+        self.roundTimeLeft = 50;
     } else {
         self.roundTimerLabel.text = self.timeLeftContinued;
         double timeLeftCont = [self.timeLeftContinued doubleValue];

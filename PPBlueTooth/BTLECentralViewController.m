@@ -75,8 +75,17 @@ BOOL alreadyVirus = NO;
 {
     [super viewDidLoad];
     
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
     // Start up the CBCentralManager
+    // if it matches our server name saved in Appdelegate then a central manager will be createdf
+    
+    if ([appDelegate.ppService isEqualToString:self.serverName]){
+        
     _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+        
+    }
+    
     _data = [[NSMutableData alloc] init];
     
     [self drawCircle];
@@ -126,7 +135,7 @@ BOOL alreadyVirus = NO;
                                                      userInfo:nil
                                                       repeats:YES];
     
-    self.roundTimeLeft = 10;
+    self.roundTimeLeft = 50;
 }
 
 -(void) countDown:(NSTimer *)timer {
