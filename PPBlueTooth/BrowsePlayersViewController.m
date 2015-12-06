@@ -218,7 +218,7 @@ typedef NS_ENUM(NSInteger, BrowseState) {
     self.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     // Allocate players array
-    self.players = [[NSMutableArray alloc]initWithCapacity:4];
+    self.players = [[NSMutableArray alloc]init];
     self.readyPlayers = [[NSMutableDictionary alloc]init];
     
     // Load BG
@@ -326,6 +326,10 @@ typedef NS_ENUM(NSInteger, BrowseState) {
      currentPeers:(NSArray *)currentPeers
        gameStatus:(NSString *)gameStatus {
 
+    if (self.ppMatchmaking.connectedPeers.count + 1==4){
+        [self.ppMatchmaking stopAcceptingGuests];
+    }
+    
     if (state == MCSessionStateConnected) {
         NSLog(@"Connected to %@", peer.displayName);
     }
@@ -375,7 +379,7 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 #pragma mark - Assigning Peripheral
 -(void)assignVirusPeripheral{
     
-    self.allConnectedPeers = [[[NSMutableArray alloc]initWithArray:self.ppMatchmaking.connectedPeers]initWithCapacity:4];
+    self.allConnectedPeers = [[[NSMutableArray alloc]initWithArray:self.ppMatchmaking.connectedPeers]init];
     [self.allConnectedPeers addObject:self.ppMatchmaking.peerID];
     
     NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:self.allConnectedPeers];

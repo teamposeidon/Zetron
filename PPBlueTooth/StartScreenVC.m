@@ -94,11 +94,6 @@
     
     self.session = [[MCSession alloc]initWithPeer:self.player.mcPeerID];
 //    self.advertiser = [[MCAdvertiserAssistant alloc]initWithServiceType:ppService discoveryInfo:nil session:self.session];
-<<<<<<< HEAD
-//    
-=======
-    
->>>>>>> 19597cff4bc0217a8322130f393e77c22630ed35
     [self.advertiser start];
 }
 
@@ -111,13 +106,9 @@
 - (void)requireDeviceConnected
 {
     if (self.session.connectedPeers.count == 0) {
-<<<<<<< HEAD
         self.browserController;
        // = [[MCBrowserViewController alloc] initWithServiceType:ppService session:self.session];
-=======
-//        self.browserController
-//        = [[MCBrowserViewController alloc] initWithServiceType:ppService session:self.session];
->>>>>>> 19597cff4bc0217a8322130f393e77c22630ed35
+
         self.browserController.delegate = self;
         self.backgroundButton.enabled = YES;
         [self presentViewController:self.browserController animated:YES completion:nil];
