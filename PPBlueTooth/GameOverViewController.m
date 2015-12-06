@@ -319,7 +319,7 @@ UITableViewDataSource
 #pragma mark
 #pragma mark - Show Animation BG
 - (void)animationChangeBGLogo {
-    NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+    NSMutableArray *tempArray = [[NSMutableArray alloc]initWithCapacity:4];
     
     for (int i = 0; i < 8; i++){
         NSString *object = [NSString stringWithFormat:@"tmp-%d", i];
