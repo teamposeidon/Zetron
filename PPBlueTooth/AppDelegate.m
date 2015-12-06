@@ -42,6 +42,8 @@ NSString * const ppService = @"poseidon-team";
     
     self.audioPlayerStartMusic.numberOfLoops = -1;
     
+    self.audioPlayerStartMusic.volume = 0.7;
+    
     [self.audioPlayerStartMusic play];
     
     NSURL *gameMusicURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LazerhawkOverdrive" ofType:@"mp3"]];
@@ -49,6 +51,14 @@ NSString * const ppService = @"poseidon-team";
     self.audioPlayerGameMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:gameMusicURL error:nil];
     
     self.audioPlayerGameMusic.numberOfLoops = -1;
+    
+    self.audioPlayerGameMusic.volume = 0.7;
+    
+    NSURL *virusMusicURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"gunnbladez__bass-" ofType:@"wav"]];
+    
+    self.audioPlayerVirusMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:virusMusicURL error:nil];
+    
+    self.audioPlayerVirusMusic.volume = 1.0;
     
     
       return YES;

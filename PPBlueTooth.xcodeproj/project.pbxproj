@@ -11,6 +11,7 @@
 		22BA77FD1C11211F00C04E77 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BA77F91C11211F00C04E77 /* PlayerView.m */; };
 		22BA77FE1C11211F00C04E77 /* PlayerScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BA77FB1C11211F00C04E77 /* PlayerScene.m */; };
 		22BA78001C1121EA00C04E77 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BA77FF1C1121EA00C04E77 /* SpriteKit.framework */; };
+		22BA780D1C13B8D600C04E77 /* gunnbladez__bass-.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22BA780C1C13B8D600C04E77 /* gunnbladez__bass-.wav */; };
 		3D0D71041C0937DE00D639F3 /* BrowsePlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D71031C0937DE00D639F3 /* BrowsePlayersViewController.m */; };
 		3D2864481BF9030200C71A31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2864471BF9030200C71A31 /* Launch Screen.storyboard */; };
 		3D28644B1BF905C200C71A31 /* PoseidonProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D28644A1BF905C200C71A31 /* PoseidonProjectViewController.m */; };
@@ -72,6 +73,7 @@
 		22BA77FA1C11211F00C04E77 /* PlayerScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerScene.h; sourceTree = "<group>"; };
 		22BA77FB1C11211F00C04E77 /* PlayerScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerScene.m; sourceTree = "<group>"; };
 		22BA77FF1C1121EA00C04E77 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		22BA780C1C13B8D600C04E77 /* gunnbladez__bass-.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "gunnbladez__bass-.wav"; sourceTree = "<group>"; };
 		3D0D71021C0937DE00D639F3 /* BrowsePlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowsePlayersViewController.h; sourceTree = "<group>"; };
 		3D0D71031C0937DE00D639F3 /* BrowsePlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowsePlayersViewController.m; sourceTree = "<group>"; };
 		3D1914AD1C0E818900798544 /* stilltime.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = stilltime.ttf; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				3D1914AD1C0E818900798544 /* stilltime.ttf */,
 				3D2864581BFBE75F00C71A31 /* GlassCandy.mp3 */,
 				3D2864561BFBE5BD00C71A31 /* LazerhawkOverdrive.mp3 */,
+				22BA780C1C13B8D600C04E77 /* gunnbladez__bass-.wav */,
 				3D2864511BFA74D300C71A31 /* venus rising rg.ttf */,
 				3D28644F1BFA730A00C71A31 /* blade.ttf */,
 				3D3921021BF11C23003C7C81 /* main.m */,
@@ -374,7 +377,7 @@
 				TargetAttributes = {
 					3D3920FD1BF11C23003C7C81 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = Z368FJ9ZFJ;
+						DevelopmentTeam = N2DCZ2U592;
 					};
 					3D3921161BF11C23003C7C81 = {
 						CreatedOnToolsVersion = 7.1;
@@ -416,6 +419,7 @@
 				3D2A1E2D1C05170200C57B99 /* SpriteView.xib in Resources */,
 				9AB6FA7F1C13B11D00250408 /* CustomZetronTableViewCell.xib in Resources */,
 				3D2864521BFA74F800C71A31 /* venus rising rg.ttf in Resources */,
+				22BA780D1C13B8D600C04E77 /* gunnbladez__bass-.wav in Resources */,
 				3D2864501BFA73BD00C71A31 /* blade.ttf in Resources */,
 				3D2864481BF9030200C71A31 /* Launch Screen.storyboard in Resources */,
 				3D28644E1BF9098A00C71A31 /* poseidon.gif in Resources */,
@@ -636,7 +640,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jamaalsedayao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danieldistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -651,7 +655,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jamaalsedayao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danieldistant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
