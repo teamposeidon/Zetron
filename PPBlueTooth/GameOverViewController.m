@@ -52,7 +52,7 @@ UITableViewDataSource
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.allConnectedPeers = [[NSMutableDictionary alloc]initWithCapacity:4];
+    self.allConnectedPeers = [[NSMutableDictionary alloc]init];
     self.readyPlayers = [[NSMutableDictionary alloc]init];
     
     [self matchmakingLoad];
@@ -339,7 +339,7 @@ UITableViewDataSource
 #pragma mark
 #pragma mark - Show Animation BG
 - (void)animationChangeBGLogo {
-    NSMutableArray *tempArray = [[NSMutableArray alloc]initWithCapacity:4];
+    NSMutableArray *tempArray = [[NSMutableArray alloc]init];
     
     for (int i = 0; i < 8; i++){
         NSString *object = [NSString stringWithFormat:@"tmp-%d", i];
