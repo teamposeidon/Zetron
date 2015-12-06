@@ -65,9 +65,58 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 @property (nonatomic) NSTimeInterval countdownTimeLeft;
 @property (nonatomic) NSTimer *countdownTimer;
 
+// App Delegate
+@property (nonatomic) AppDelegate *appDelegate;
+
 @end
 
 @implementation BrowsePlayersViewController
+
+
+
+#pragma mark
+#pragma mark - Life Cycle
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    // Show the alert controller
+    [self alertControllerShow];
+}
+
+#pragma mark
+#pragma mark - Alert Controller User Name
+- (void)alertControllerShow{
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:@"Z E T R O N"
+                                          message:@"Enter Server Name:"
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    // Alert Message - OK Button
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        // This will add the server room
+        self.appDelegate.ppService = alertController.textFields.firstObject.text;
+        
+        // Load matchmaking
+        [self matchmakingLoad];
+        
+    }];
+    
+    // Alert Message - Cancel Button
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        NSLog(@"Cancel");
+    }];
+    
+    [alertController addAction:ok];
+    [alertController addAction:cancel];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Server Name";
+    }];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
+
 
 #pragma mark
 #pragma mark - Drop Shadow Side Bar
@@ -151,12 +200,10 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Setup Drop Shadow
     [self setUpDropShadowSideBar];
     
-    // Load matchmaking
-    [self matchmakingLoad];
+    self.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     // Allocate players array
     self.players = [[NSMutableArray alloc]init];
@@ -196,7 +243,7 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 #pragma mark 
 #pragma mark Matchmakign Setup
 - (void)matchmakingLoad {
-    self.ppMatchmaking = [[PPMatchmaking alloc] initWithServiceType:ppService];
+    self.ppMatchmaking = [[PPMatchmaking alloc] initWithServiceType:self.appDelegate.ppService];
     self.ppMatchmaking.delegate = self;
     
 }

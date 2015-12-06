@@ -13,9 +13,9 @@
 
 @class ViewController;
 
-extern NSString * const ppService;
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (nonatomic, strong) NSString *ppService;
 
 @property (strong, nonatomic) UIWindow *window;
 

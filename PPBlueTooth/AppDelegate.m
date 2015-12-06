@@ -8,12 +8,10 @@
 #import "Parse.h"
 #import "AppDelegate.h"
 
-NSString * const ppService = @"poseidon-team";
 
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) NSString *ppService;
 
 @end
 

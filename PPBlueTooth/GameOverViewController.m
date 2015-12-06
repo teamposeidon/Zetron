@@ -34,12 +34,18 @@ UITableViewDataSource
 @property (nonatomic) BOOL countDown;
 @property (nonatomic) double counter;
 
+@property (nonatomic) AppDelegate *appDelegate;
+
+
 @end
 
 @implementation GameOverViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
     self.gameResultsView.layer.cornerRadius = 4.0f;
     
     self.tableView.delegate = self;
@@ -85,7 +91,7 @@ UITableViewDataSource
 #pragma mark - Reconnect Peers in PPMatchmaking
 
 - (void)matchmakingLoad {
-    self.ppMatchmaking = [[PPMatchmaking alloc] initWithServiceType:ppService];
+    self.ppMatchmaking = [[PPMatchmaking alloc] initWithServiceType:self.appDelegate.ppService];
     self.ppMatchmaking.delegate = self;
     
 }
