@@ -1,3 +1,10 @@
+//
+//  BrowsePlayersViewController.h
+//  PPBlueTooth
+//
+//  Created by Fatima Zenine Villanueva on 11/27/15.
+//  Copyright © 2015 apps. All rights reserved.
+//
 
 
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
