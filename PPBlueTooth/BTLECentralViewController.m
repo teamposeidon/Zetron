@@ -119,7 +119,7 @@ BOOL alreadyVirus = NO;
                                                      userInfo:nil
                                                       repeats:YES];
     
-    self.roundTimeLeft = 30;
+    self.roundTimeLeft = 10;
 }
 
 -(void) countDown:(NSTimer *)timer {

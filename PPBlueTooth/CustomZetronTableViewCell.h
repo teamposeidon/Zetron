@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomZetronTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *peerNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *statusLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *statusImage;
 
 @end

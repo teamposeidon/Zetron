@@ -8,6 +8,7 @@
 
 #import "GameOverViewController.h"
 #import "AppDelegate.h"
+#import "CustomZetronTableViewCell.h"
 
 typedef NS_ENUM(NSInteger, ReconnectState) {
     ReconnectStateNone,
@@ -61,7 +62,7 @@ UITableViewDataSource
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    [self createGatherAlert];
+    //[self createGatherAlert];
 }
 
 - (void) createGatherAlert {
@@ -130,6 +131,7 @@ UITableViewDataSource
     
     if (state == MCSessionStateConnected) {
         NSLog(@"Connected to %@", peer.displayName);
+        [self sendMessageToPeers];
         [self makePeerReady:peer];
         [self checkReady];
     }
@@ -217,16 +219,35 @@ UITableViewDataSource
     return self.allConnectedPeers.count;
 }
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ZetronIdentifier" forIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ZetronIdentifier" forIndexPath:indexPath];
     
     //cell.textLabel.text = peer.displayName;
     
     NSArray* keys = [self.allConnectedPeers allKeys];
     
-    cell.textLabel.text = keys[indexPath.row];
+//    cell.textLabel.text = keys[indexPath.row];
+//    
+//    cell.detailTextLabel.text = [self.allConnectedPeers objectForKey:[keys objectAtIndex:indexPath.row]];
     
-    cell.detailTextLabel.text = [self.allConnectedPeers objectForKey:[keys objectAtIndex:indexPath.row]];
+    static NSString *zetronID = @"ZetronCustomID";
     
+    CustomZetronTableViewCell *cell = (CustomZetronTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:zetronID];
+    if (cell == nil){
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"CustomZetronTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    
+    cell.peerNameLabel.text = keys[indexPath.row];
+    
+    NSString *statusString = [self.allConnectedPeers objectForKey:[keys objectAtIndex:indexPath.row]];
+
+    cell.statusLabel.text = statusString;
+    
+    if ([statusString isEqualToString:@"ZETRON"]){
+        cell.statusImage.image = [UIImage imageNamed:@"zetron1"];
+    } else if ([statusString isEqualToString:@"Survivor"]){
+        cell.statusImage.image = [UIImage imageNamed:@"runner1"];
+    }
     
     return cell;
 }

@@ -138,7 +138,7 @@
                                     <segue destination="ux0-8C-qBh" kind="modal" id="GRo-3Q-deP"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="F85255F0-56D2-4DC6-BD85-D76BADDAB278" translatesAutoresizingMaskIntoConstraints="NO" id="KsB-60-PxL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E367F101-94A6-4A37-ADCE-D147E7F6A9EA" translatesAutoresizingMaskIntoConstraints="NO" id="KsB-60-PxL">
                                 <rect key="frame" x="40" y="82" width="520" height="437"/>
                                 <animations/>
                                 <constraints>
@@ -923,7 +923,7 @@
     </scenes>
     <resources>
         <image name="Border" width="1080" height="1920"/>
-        <image name="F85255F0-56D2-4DC6-BD85-D76BADDAB278" width="547" height="364">
+        <image name="E367F101-94A6-4A37-ADCE-D147E7F6A9EA" width="547" height="364">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

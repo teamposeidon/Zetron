@@ -138,11 +138,13 @@ typedef NS_ENUM(NSInteger, BrowseState) {
 }
 
 - (IBAction)leaveMatchmaking:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
     [self.ppMatchmaking leaveParty];
     
     NSLog(@"Number of connected peers: %lu", (unsigned long)self.ppMatchmaking.connectedPeers.count);
     
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark
