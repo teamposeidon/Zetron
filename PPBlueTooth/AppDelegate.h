@@ -23,5 +23,7 @@ extern NSString * const ppService;
 
 @property (nonatomic) AVAudioPlayer *audioPlayerGameMusic;
 
+@property (nonatomic) AVAudioPlayer *audioPlayerVirusMusic;
+
 @end
 
