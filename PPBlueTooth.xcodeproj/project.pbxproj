@@ -11,7 +11,7 @@
 		22BA77FD1C11211F00C04E77 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BA77F91C11211F00C04E77 /* PlayerView.m */; };
 		22BA77FE1C11211F00C04E77 /* PlayerScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 22BA77FB1C11211F00C04E77 /* PlayerScene.m */; };
 		22BA78001C1121EA00C04E77 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22BA77FF1C1121EA00C04E77 /* SpriteKit.framework */; };
-		22BA780D1C13B8D600C04E77 /* gunnbladez__bass-.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22BA780C1C13B8D600C04E77 /* gunnbladez__bass-.wav */; };
+		22BA780D1C13B8D600C04E77 /* Gunnbladez.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22BA780C1C13B8D600C04E77 /* Gunnbladez.wav */; };
 		3D0D71041C0937DE00D639F3 /* BrowsePlayersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0D71031C0937DE00D639F3 /* BrowsePlayersViewController.m */; };
 		3D2864481BF9030200C71A31 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2864471BF9030200C71A31 /* Launch Screen.storyboard */; };
 		3D28644B1BF905C200C71A31 /* PoseidonProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D28644A1BF905C200C71A31 /* PoseidonProjectViewController.m */; };
@@ -42,6 +42,8 @@
 		3DF72AD11BF7ED4E00B2E5E0 /* BTLECentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72ACD1BF7ED4E00B2E5E0 /* BTLECentralViewController.m */; };
 		3DF72AD21BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72ACF1BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m */; };
 		3DF72AD51BF81DBF00B2E5E0 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */; };
+		51AE7FF51C1513D9002A8FB7 /* AVAudioPlayerPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AE7FF41C1513D9002A8FB7 /* AVAudioPlayerPool.m */; };
+		51AE7FF71C15487D002A8FB7 /* newglitch.wav in Resources */ = {isa = PBXBuildFile; fileRef = 51AE7FF61C15487D002A8FB7 /* newglitch.wav */; };
 		51BC60F21C14ED27007A3163 /* tvstaticR1.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60EE1C14ED27007A3163 /* tvstaticR1.png */; };
 		51BC60F31C14ED27007A3163 /* tvstaticR2.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60EF1C14ED27007A3163 /* tvstaticR2.png */; };
 		51BC60F41C14ED27007A3163 /* tvstaticR3.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60F01C14ED27007A3163 /* tvstaticR3.png */; };
@@ -77,7 +79,7 @@
 		22BA77FA1C11211F00C04E77 /* PlayerScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerScene.h; sourceTree = "<group>"; };
 		22BA77FB1C11211F00C04E77 /* PlayerScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerScene.m; sourceTree = "<group>"; };
 		22BA77FF1C1121EA00C04E77 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		22BA780C1C13B8D600C04E77 /* gunnbladez__bass-.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "gunnbladez__bass-.wav"; sourceTree = "<group>"; };
+		22BA780C1C13B8D600C04E77 /* Gunnbladez.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Gunnbladez.wav; sourceTree = "<group>"; };
 		3D0D71021C0937DE00D639F3 /* BrowsePlayersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowsePlayersViewController.h; sourceTree = "<group>"; };
 		3D0D71031C0937DE00D639F3 /* BrowsePlayersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowsePlayersViewController.m; sourceTree = "<group>"; };
 		3D1914AD1C0E818900798544 /* stilltime.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = stilltime.ttf; sourceTree = "<group>"; };
@@ -130,6 +132,9 @@
 		3DF72AD01BF7ED4E00B2E5E0 /* TransferService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferService.h; sourceTree = "<group>"; };
 		3DF72AD31BF81DBF00B2E5E0 /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
 		3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
+		51AE7FF31C1513D9002A8FB7 /* AVAudioPlayerPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVAudioPlayerPool.h; sourceTree = "<group>"; };
+		51AE7FF41C1513D9002A8FB7 /* AVAudioPlayerPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVAudioPlayerPool.m; sourceTree = "<group>"; };
+		51AE7FF61C15487D002A8FB7 /* newglitch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newglitch.wav; sourceTree = "<group>"; };
 		51BC60EE1C14ED27007A3163 /* tvstaticR1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR1.png; sourceTree = "<group>"; };
 		51BC60EF1C14ED27007A3163 /* tvstaticR2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR2.png; sourceTree = "<group>"; };
 		51BC60F01C14ED27007A3163 /* tvstaticR3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR3.png; sourceTree = "<group>"; };
@@ -229,6 +234,8 @@
 			children = (
 				3D3921041BF11C23003C7C81 /* AppDelegate.h */,
 				3D3921051BF11C23003C7C81 /* AppDelegate.m */,
+				51AE7FF31C1513D9002A8FB7 /* AVAudioPlayerPool.h */,
+				51AE7FF41C1513D9002A8FB7 /* AVAudioPlayerPool.m */,
 				3DE767011C0FC48700A84000 /* GradientProgressView.h */,
 				3DE767021C0FC48700A84000 /* GradientProgressView.m */,
 				3D2A1E2E1C05171700C57B99 /* RulesScene.h */,
@@ -282,10 +289,11 @@
 		3D3921011BF11C23003C7C81 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				51AE7FF61C15487D002A8FB7 /* newglitch.wav */,
 				3D1914AD1C0E818900798544 /* stilltime.ttf */,
 				3D2864581BFBE75F00C71A31 /* GlassCandy.mp3 */,
 				3D2864561BFBE5BD00C71A31 /* LazerhawkOverdrive.mp3 */,
-				22BA780C1C13B8D600C04E77 /* gunnbladez__bass-.wav */,
+				22BA780C1C13B8D600C04E77 /* Gunnbladez.wav */,
 				3D2864511BFA74D300C71A31 /* venus rising rg.ttf */,
 				3D28644F1BFA730A00C71A31 /* blade.ttf */,
 				3D3921021BF11C23003C7C81 /* main.m */,
@@ -433,7 +441,8 @@
 				3D2864521BFA74F800C71A31 /* venus rising rg.ttf in Resources */,
 				51BC60F41C14ED27007A3163 /* tvstaticR3.png in Resources */,
 				51BC60F21C14ED27007A3163 /* tvstaticR1.png in Resources */,
-				22BA780D1C13B8D600C04E77 /* gunnbladez__bass-.wav in Resources */,
+				51AE7FF71C15487D002A8FB7 /* newglitch.wav in Resources */,
+				22BA780D1C13B8D600C04E77 /* Gunnbladez.wav in Resources */,
 				3D2864501BFA73BD00C71A31 /* blade.ttf in Resources */,
 				3D2864481BF9030200C71A31 /* Launch Screen.storyboard in Resources */,
 				3D28644E1BF9098A00C71A31 /* poseidon.gif in Resources */,
@@ -509,6 +518,7 @@
 				51FC0E511C100A4D006A387C /* MatchMakingPlayerCell.m in Sources */,
 				3DF72AD11BF7ED4E00B2E5E0 /* BTLECentralViewController.m in Sources */,
 				3D2A1E301C05171700C57B99 /* RulesScene.m in Sources */,
+				51AE7FF51C1513D9002A8FB7 /* AVAudioPlayerPool.m in Sources */,
 				22BA77FD1C11211F00C04E77 /* PlayerView.m in Sources */,
 				3D3921091BF11C23003C7C81 /* StartScreenVC.m in Sources */,
 				3DF72AD51BF81DBF00B2E5E0 /* StartGameViewController.m in Sources */,

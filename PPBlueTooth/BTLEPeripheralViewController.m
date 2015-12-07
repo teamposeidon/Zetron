@@ -10,6 +10,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import "TransferService.h"
 #import "GameOverViewController.h"
+#import "AVAudioPlayerPool.h"
 
 
 @interface BTLEPeripheralViewController () <CBPeripheralManagerDelegate>
@@ -97,24 +98,26 @@
     [self startGameTimer];
     
     //sound
-    
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    
-    [appDelegate.audioPlayerStartMusic stop];
-    
-    [appDelegate.audioPlayerVirusMusic play];
-    
-    [self performSelector:@selector(playGameMusic) withObject:self afterDelay:5.5];
+    [[AVAudioPlayerPool sharedInstance] setPlayerStates:AudioPlayerStateViral];
+
+
+//    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//    
+//    [appDelegate.audioPlayerStartMusic stop];
+//    
+//    [appDelegate.audioPlayerVirusMusic play];
+//    
+//    [self performSelector:@selector(playGameMusic) withObject:self afterDelay:5.5];
 
 }
 
-- (void) playGameMusic {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    
-    [appDelegate.audioPlayerVirusMusic stop];
-    
-    [appDelegate.audioPlayerGameMusic play];
-}
+//- (void) playGameMusic {
+//    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//    
+//    [appDelegate.audioPlayerVirusMusic stop];
+//    
+//    [appDelegate.audioPlayerGameMusic play];
+//}
 
 - (void)viewWillDisappear:(BOOL)animated
 {

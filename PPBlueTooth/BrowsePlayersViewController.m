@@ -394,7 +394,8 @@ typedef NS_ENUM(NSInteger, BrowseState) {
     
     self.peripheralID = [orderedArray firstObject];
     
-    self.localVirusRandomSelection = self.peripheralID;
+//    self.localVirusRandomSelection = self.peripheralID;
+    self.localVirusRandomSelection = self.ppMatchmaking.peerID;
 }
 - (void)sendMessageToPeers{
     //sends a message to other devices who is the virus

@@ -14,6 +14,7 @@
 #import "GameOverViewController.h"
 #import "BTLEPeripheralViewController.h"
 #import "Parse.h"
+#import "AVAudioPlayerPool.h"
 
 
 #import "TransferService.h"
@@ -35,6 +36,7 @@
 
 //Sound
 @property (nonatomic) AVAudioPlayer *player;
+@property (nonatomic) AVAudioPlayer *sound;
 
 //Timer for Scanning
 @property (nonatomic) NSTimer *scanTimer;
@@ -68,6 +70,7 @@ int rssiCount = 0;
 BOOL rssiSetNum;
 
 BOOL alreadyVirus = NO;
+BOOL pushedToPeripheral = NO;
 
 
 #pragma mark
@@ -85,7 +88,7 @@ BOOL alreadyVirus = NO;
     
     if ([appDelegate.ppService isEqualToString:self.serverName]){
         
-    _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+        _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
         
     }
     
@@ -108,14 +111,6 @@ BOOL alreadyVirus = NO;
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    //sound
-    
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    
-    [appDelegate.audioPlayerStartMusic stop];
-    
-    [appDelegate.audioPlayerGameMusic play];
-    
     // Starts the moving gradient effect
     [self.progressView startAnimating];
     
@@ -127,6 +122,12 @@ BOOL alreadyVirus = NO;
     [self.centralManager stopScan];
     NSLog(@"Scanning stopped");
     [super viewWillDisappear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[AVAudioPlayerPool sharedInstance] setPlayerStates:AudioPlayerStateHealthy];
 }
 
 #pragma mark
@@ -212,7 +213,7 @@ BOOL alreadyVirus = NO;
 
 // This is called from virusUploadTime ()
 - (void) redVirusUploadProgress {
-    [self.progressView setProgress:(self.progressView.progress + 0.01)];
+    [self.progressView setProgress:(self.progressView.progress + 0.1)];
     [self updateProgressBarLabel];
 }
 
@@ -376,20 +377,23 @@ BOOL alreadyVirus = NO;
         if (RSSINumber.integerValue > -70) {
             countWithinRange++;
         }
+        
     }
     CGFloat percentWithinRange = (CGFloat)countWithinRange/self.RSSIValues.count;
     if (percentWithinRange > 0.9) {
         
         alreadyVirus = YES;
+
         
         
-        NSTimer *waitSeconds = [NSTimer scheduledTimerWithTimeInterval:0.5
+        NSTimer *waitSeconds = [NSTimer scheduledTimerWithTimeInterval:0.05
                                                                 target:self
                                                               selector:@selector(virusUpoloadTime)
                                                               userInfo:nil
                                                                repeats:NO];
         
-        if (self.progressView.progress == 1.0){
+        if (self.progressView.progress == 1.0 && !pushedToPeripheral){
+            pushedToPeripheral = YES;
             
             [self.centralView setBackgroundColor:[UIColor redColor]];
 
@@ -399,6 +403,10 @@ BOOL alreadyVirus = NO;
             viewController.timeLeftContinued = self.roundTimerLabel.text;
             [self presentViewController:viewController animated:YES completion:nil];
             
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[AVAudioPlayerPool sharedInstance] playTransitionAudio];
+            });
+
         }
     }
     
@@ -410,7 +418,10 @@ BOOL alreadyVirus = NO;
 
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI {
-    
+    // Don't do anything if the central view controller is not visible
+    if (!(self.isViewLoaded && self.view.window)) {
+        return;
+    }
     if (RSSI.integerValue > 0) return;
     
     NSLog(@"RSSI %@", RSSI);
@@ -462,11 +473,13 @@ BOOL alreadyVirus = NO;
             }
         
         [self startGlitchAnimation];
+        [[AVAudioPlayerPool sharedInstance] setPlayerStates:AudioPlayerStateClosePoximity];
         [self.centralView setBackgroundColor:[UIColor yellowColor]];
         
     } else {
         alreadyVirus = NO;
         [self stopGlitchAnimation];
+        [[AVAudioPlayerPool sharedInstance] setPlayerStates:AudioPlayerStateHealthy];
         [self.centralView setBackgroundColor:[UIColor greenColor]];
         [self.progressView setProgress:(self.progressView.progress - 0.00)];
     }
@@ -715,6 +728,14 @@ BOOL alreadyVirus = NO;
     
     PlayerScene *newScene = [[PlayerScene alloc] initWithSize:CGSizeMake(200, 200)];
     [playerView presentScene:newScene];
+}
+#pragma mark - SoundFX
+
+-(void)playIntroSong {
+    NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LazerhawkOverdrive"  ofType:@"mp3"]];
+    
+    self.sound = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+    [self.sound play];
 }
 - (void) startGlitchAnimation {
     

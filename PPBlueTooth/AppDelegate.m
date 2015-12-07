@@ -7,7 +7,7 @@
 //
 #import "Parse.h"
 #import "AppDelegate.h"
-
+#import "AVAudioPlayerPool.h"
 
 
 @interface AppDelegate ()
@@ -31,33 +31,7 @@
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    //audio players
-    
-    NSURL *startMusicURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"GlassCandy"  ofType:@"mp3"]];
-    
-    self.audioPlayerStartMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:startMusicURL error:nil];
-    
-    self.audioPlayerStartMusic.numberOfLoops = -1;
-    
-    self.audioPlayerStartMusic.volume = 0.7;
-    
-    [self.audioPlayerStartMusic play];
-    
-    NSURL *gameMusicURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"LazerhawkOverdrive" ofType:@"mp3"]];
-    
-    self.audioPlayerGameMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:gameMusicURL error:nil];
-    
-    self.audioPlayerGameMusic.numberOfLoops = -1;
-    
-    self.audioPlayerGameMusic.volume = 0.7;
-    
-    NSURL *virusMusicURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"gunnbladez__bass-" ofType:@"wav"]];
-    
-    self.audioPlayerVirusMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:virusMusicURL error:nil];
-    
-    self.audioPlayerVirusMusic.volume = 1.0;
-    
+    [[AVAudioPlayerPool sharedInstance] setPlayerStates:AudioPlayerStatePregame];
     
       return YES;
 }

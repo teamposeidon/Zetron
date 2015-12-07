@@ -16,6 +16,7 @@
 #import "BTLECentralViewController.h"
 #import "BTLEPeripheralViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AVAudioPlayerPool.h"
 
 
 @interface StartGameViewController () <MCBrowserViewControllerDelegate, MCSessionDelegate>
@@ -44,7 +45,7 @@
 @property (nonatomic, strong) NSMutableArray<MCPeerID *> *centralIDs;
 
 //Sound
-@property (nonatomic) AVAudioPlayer *audioPlayer;
+//@property (nonatomic) AVAudioPlayer *audioPlayer;
 
 //assigning Virus properties
 @property (nonatomic) MCPeerID *localVirusRandomSelection;  //this is the random virus chosen by each phone
@@ -129,6 +130,7 @@
     self.session.delegate = self;
 
     // Music Setup
+//    [[AVAudioPlayerPool sharedInstance] setPlayerStates:AudioPlayerStatePregame];
 //    [self musicBackGround];
     
     // Main Logo Setup
@@ -141,12 +143,12 @@
 
 #pragma mark
 #pragma mark - Sound Setup
-- (void) musicBackGround {
-    NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"GlassCandy"  ofType:@"mp3"]];
-    
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
-    [self.audioPlayer play];
-}
+//- (void) musicBackGround {
+//    NSURL *soundURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"GlassCandy"  ofType:@"mp3"]];
+//    
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:nil];
+//    [self.audioPlayer play];
+//}
 
 #pragma mark
 #pragma mark - Drop Shadow Side Bar
@@ -290,11 +292,11 @@
 //     ^{
         if ([self.player.zitronUserName rangeOfString:@"virus"].location == NSNotFound) {
             NSLog(@"string does not contain virus");
-            [self.audioPlayer stop];
+//            [self.audioPlayer stop];
            // [self pushToCentral];
         } else {
             NSLog(@"string contains virus!");
-            [self.audioPlayer stop];
+//            [self.audioPlayer stop];
            // [self pushToPeripheral];
         }
     }];

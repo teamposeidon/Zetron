@@ -19,11 +19,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic) AVAudioPlayer *audioPlayerStartMusic;
 
-@property (nonatomic) AVAudioPlayer *audioPlayerGameMusic;
-
-@property (nonatomic) AVAudioPlayer *audioPlayerVirusMusic;
 
 @end
 
