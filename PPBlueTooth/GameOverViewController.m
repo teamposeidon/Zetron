@@ -69,7 +69,9 @@ UITableViewDataSource
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    [self createGatherAlert];
+    //[self createGatherAlert];
+    
+    [self fireMessageTimer];
 }
 
 - (void) createGatherAlert {
@@ -105,7 +107,7 @@ UITableViewDataSource
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                           
-                                                              [self fireMessageTimer];
+                                                             [self fireMessageTimer];
                                                           
                                                           }];
     
@@ -156,15 +158,16 @@ UITableViewDataSource
 }
 - (void)fireMessageTimer{
     
-    self.messageTimer = [NSTimer scheduledTimerWithTimeInterval:1
+    self.messageTimer = [NSTimer scheduledTimerWithTimeInterval:.1
                                                              target:self
                                                            selector:@selector(sendMessageToPeers)
                                                            userInfo:nil
                                                             repeats:YES];
     
-    [self.tableView reloadData];
-    //[[NSRunLoop mainRunLoop] addTimer:self.messageTimer forMode:NSRunLoopCommonModes];
     
+    [[NSRunLoop mainRunLoop] addTimer:self.messageTimer forMode:NSRunLoopCommonModes];
+    
+    [self.tableView reloadData];
     
 }
 - (void)sendMessageToPeers {

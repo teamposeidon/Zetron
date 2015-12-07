@@ -42,6 +42,10 @@
 		3DF72AD11BF7ED4E00B2E5E0 /* BTLECentralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72ACD1BF7ED4E00B2E5E0 /* BTLECentralViewController.m */; };
 		3DF72AD21BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72ACF1BF7ED4E00B2E5E0 /* BTLEPeripheralViewController.m */; };
 		3DF72AD51BF81DBF00B2E5E0 /* StartGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */; };
+		51BC60F21C14ED27007A3163 /* tvstaticR1.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60EE1C14ED27007A3163 /* tvstaticR1.png */; };
+		51BC60F31C14ED27007A3163 /* tvstaticR2.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60EF1C14ED27007A3163 /* tvstaticR2.png */; };
+		51BC60F41C14ED27007A3163 /* tvstaticR3.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60F01C14ED27007A3163 /* tvstaticR3.png */; };
+		51BC60F51C14ED27007A3163 /* tvstaticR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60F11C14ED27007A3163 /* tvstaticR4.png */; };
 		51FC0E511C100A4D006A387C /* MatchMakingPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FC0E501C100A4D006A387C /* MatchMakingPlayerCell.m */; };
 		8F1751E746AB70EC6467FBC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44701EE89854B05CA589F1E /* libPods.a */; };
 		9AB6FA7E1C13B11D00250408 /* CustomZetronTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6FA7C1C13B11D00250408 /* CustomZetronTableViewCell.m */; };
@@ -126,6 +130,10 @@
 		3DF72AD01BF7ED4E00B2E5E0 /* TransferService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferService.h; sourceTree = "<group>"; };
 		3DF72AD31BF81DBF00B2E5E0 /* StartGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartGameViewController.h; sourceTree = "<group>"; };
 		3DF72AD41BF81DBF00B2E5E0 /* StartGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartGameViewController.m; sourceTree = "<group>"; };
+		51BC60EE1C14ED27007A3163 /* tvstaticR1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR1.png; sourceTree = "<group>"; };
+		51BC60EF1C14ED27007A3163 /* tvstaticR2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR2.png; sourceTree = "<group>"; };
+		51BC60F01C14ED27007A3163 /* tvstaticR3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR3.png; sourceTree = "<group>"; };
+		51BC60F11C14ED27007A3163 /* tvstaticR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR4.png; sourceTree = "<group>"; };
 		51FC0E4F1C100A4D006A387C /* MatchMakingPlayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchMakingPlayerCell.h; sourceTree = "<group>"; };
 		51FC0E501C100A4D006A387C /* MatchMakingPlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchMakingPlayerCell.m; sourceTree = "<group>"; };
 		9AB6FA7B1C13B11D00250408 /* CustomZetronTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomZetronTableViewCell.h; sourceTree = "<group>"; };
@@ -181,6 +189,10 @@
 		3D28644C1BF9097100C71A31 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				51BC60EE1C14ED27007A3163 /* tvstaticR1.png */,
+				51BC60EF1C14ED27007A3163 /* tvstaticR2.png */,
+				51BC60F01C14ED27007A3163 /* tvstaticR3.png */,
+				51BC60F11C14ED27007A3163 /* tvstaticR4.png */,
 				3D28644D1BF9098A00C71A31 /* poseidon.gif */,
 			);
 			name = Images;
@@ -419,13 +431,17 @@
 				3D2A1E2D1C05170200C57B99 /* SpriteView.xib in Resources */,
 				9AB6FA7F1C13B11D00250408 /* CustomZetronTableViewCell.xib in Resources */,
 				3D2864521BFA74F800C71A31 /* venus rising rg.ttf in Resources */,
+				51BC60F41C14ED27007A3163 /* tvstaticR3.png in Resources */,
+				51BC60F21C14ED27007A3163 /* tvstaticR1.png in Resources */,
 				22BA780D1C13B8D600C04E77 /* gunnbladez__bass-.wav in Resources */,
 				3D2864501BFA73BD00C71A31 /* blade.ttf in Resources */,
 				3D2864481BF9030200C71A31 /* Launch Screen.storyboard in Resources */,
 				3D28644E1BF9098A00C71A31 /* poseidon.gif in Resources */,
+				51BC60F51C14ED27007A3163 /* tvstaticR4.png in Resources */,
 				3D2864571BFBE5BD00C71A31 /* LazerhawkOverdrive.mp3 in Resources */,
 				3D2864591BFBE75F00C71A31 /* GlassCandy.mp3 in Resources */,
 				3D39210E1BF11C23003C7C81 /* Assets.xcassets in Resources */,
+				51BC60F31C14ED27007A3163 /* tvstaticR2.png in Resources */,
 				3D39210C1BF11C23003C7C81 /* Main.storyboard in Resources */,
 				22BA77FC1C11211F00C04E77 /* PlayerView.xib in Resources */,
 			);

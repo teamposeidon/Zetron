@@ -48,6 +48,16 @@
 {
     [super viewDidLoad];
     
+    if (self.timeLeftContinued == nil) {
+        self.roundTimeLeft = 60;
+        self.roundTimerLabel.text = @(self.roundTimeLeft).stringValue;
+    } else {
+        double timeLeftCont = [self.timeLeftContinued doubleValue];
+        self.roundTimeLeft = timeLeftCont;
+        self.roundTimerLabel.text = @(self.roundTimeLeft).stringValue;
+    }
+    
+    
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     // Start up the CBPeripheralManager
@@ -127,7 +137,7 @@
                                                       repeats:YES];
     
     if (self.timeLeftContinued == nil) {
-        self.roundTimeLeft = 50;
+        self.roundTimeLeft = 60;
     } else {
         self.roundTimerLabel.text = self.timeLeftContinued;
         double timeLeftCont = [self.timeLeftContinued doubleValue];
@@ -138,12 +148,15 @@
 
 -(void) countDown:(NSTimer *)timer {
     self.roundTimeLeft--;
-    self.roundTimerLabel.text = [NSString stringWithFormat:@":%.2f",self.roundTimeLeft];
+//    self.roundTimerLabel.text = [NSString stringWithFormat:@"%f",self.roundTimeLeft];
     if (self.roundTimeLeft == -1) {
         [self.roundTimer invalidate];
         //[self sendMessageToEndGame];
         [self pushToGameOverViewController];
+    }  else {
+        self.roundTimerLabel.text = @(self.roundTimeLeft).stringValue;
     }
+
 }
 
 -(void)sendMessageToEndGame{

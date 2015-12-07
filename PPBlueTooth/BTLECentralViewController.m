@@ -20,6 +20,7 @@
 
 @interface BTLECentralViewController () <CBCentralManagerDelegate, CBPeripheralDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *glitchLayerImage;
 @property (weak, nonatomic) IBOutlet UITextView  *textView;
 @property (strong, nonatomic) CBCentralManager   *centralManager;
 @property (strong, nonatomic) CBPeripheral       *discoveredPeripheral;
@@ -74,6 +75,8 @@ BOOL alreadyVirus = NO;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.roundTimerLabel.text = @"60";
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -135,7 +138,7 @@ BOOL alreadyVirus = NO;
                                                      userInfo:nil
                                                       repeats:YES];
     
-    self.roundTimeLeft = 50;
+    self.roundTimeLeft = 60;
 }
 
 -(void) countDown:(NSTimer *)timer {
@@ -416,6 +419,7 @@ BOOL alreadyVirus = NO;
         
         if (self.RSSIValues == nil) {
             self.RSSIValues = [[NSMutableArray alloc] init];
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             //how long the checking process will run for: 10 seconds
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 //checks value after three seconds
@@ -456,12 +460,13 @@ BOOL alreadyVirus = NO;
                     
                 }
             }
-            
-            
-            [self.centralView setBackgroundColor:[UIColor yellowColor]];
+        
+        [self startGlitchAnimation];
+        [self.centralView setBackgroundColor:[UIColor yellowColor]];
         
     } else {
         alreadyVirus = NO;
+        [self stopGlitchAnimation];
         [self.centralView setBackgroundColor:[UIColor greenColor]];
         [self.progressView setProgress:(self.progressView.progress - 0.00)];
     }
@@ -710,6 +715,21 @@ BOOL alreadyVirus = NO;
     
     PlayerScene *newScene = [[PlayerScene alloc] initWithSize:CGSizeMake(200, 200)];
     [playerView presentScene:newScene];
+}
+- (void) startGlitchAnimation {
+    
+    self.glitchLayerImage.animationImages = [NSArray arrayWithObjects: [UIImage imageNamed:@"tvstaticR1"],
+                                             [UIImage imageNamed:@"tvstaticR2"],
+                                             [UIImage imageNamed:@"tvstaticR3"],
+                                             [UIImage imageNamed:@"tvstaticR4"], nil];
+    
+    [self.glitchLayerImage startAnimating];
+}
+- (void) stopGlitchAnimation {
+    
+    self.glitchLayerImage.animationImages = nil;
+    [self.glitchLayerImage stopAnimating];
+    
 }
 
 @end
