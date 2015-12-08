@@ -100,7 +100,7 @@
 		3D2A1E2F1C05171700C57B99 /* RulesScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulesScene.m; sourceTree = "<group>"; };
 		3D2A1E311C05173400C57B99 /* SpriteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteView.h; sourceTree = "<group>"; };
 		3D2A1E321C05173400C57B99 /* SpriteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteView.m; sourceTree = "<group>"; };
-		3D3920FE1BF11C23003C7C81 /* PPBlueTooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPBlueTooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3920FE1BF11C23003C7C81 /* Zetron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zetron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D3921021BF11C23003C7C81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3D3921041BF11C23003C7C81 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3D3921051BF11C23003C7C81 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -109,10 +109,10 @@
 		3D39210B1BF11C23003C7C81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D39210D1BF11C23003C7C81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D3921121BF11C23003C7C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D3921171BF11C23003C7C81 /* PPBlueToothTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPBlueToothTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3921171BF11C23003C7C81 /* Zetron.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Zetron.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D39211B1BF11C23003C7C81 /* PPBlueToothTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPBlueToothTests.m; sourceTree = "<group>"; };
 		3D39211D1BF11C23003C7C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D3921221BF11C23003C7C81 /* PPBlueToothUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPBlueToothUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3921221BF11C23003C7C81 /* Zetron.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Zetron.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D3921261BF11C23003C7C81 /* PPBlueToothUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPBlueToothUITests.m; sourceTree = "<group>"; };
 		3D3921281BF11C23003C7C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D3921341BF11C46003C7C81 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -226,9 +226,9 @@
 		3D3920FF1BF11C23003C7C81 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3D3920FE1BF11C23003C7C81 /* PPBlueTooth.app */,
-				3D3921171BF11C23003C7C81 /* PPBlueToothTests.xctest */,
-				3D3921221BF11C23003C7C81 /* PPBlueToothUITests.xctest */,
+				3D3920FE1BF11C23003C7C81 /* Zetron.app */,
+				3D3921171BF11C23003C7C81 /* Zetron.xctest */,
+				3D3921221BF11C23003C7C81 /* Zetron.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -337,9 +337,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3D3920FD1BF11C23003C7C81 /* PPBlueTooth */ = {
+		3D3920FD1BF11C23003C7C81 /* Zetron */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D39212B1BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "PPBlueTooth" */;
+			buildConfigurationList = 3D39212B1BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "Zetron" */;
 			buildPhases = (
 				FCA4E0DF3603B4D3A99CB1D5 /* Check Pods Manifest.lock */,
 				3D3920FA1BF11C23003C7C81 /* Sources */,
@@ -351,14 +351,14 @@
 			);
 			dependencies = (
 			);
-			name = PPBlueTooth;
+			name = Zetron;
 			productName = PPBlueTooth;
-			productReference = 3D3920FE1BF11C23003C7C81 /* PPBlueTooth.app */;
+			productReference = 3D3920FE1BF11C23003C7C81 /* Zetron.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3D3921161BF11C23003C7C81 /* PPBlueToothTests */ = {
+		3D3921161BF11C23003C7C81 /* ZetronTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D39212E1BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "PPBlueToothTests" */;
+			buildConfigurationList = 3D39212E1BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "ZetronTests" */;
 			buildPhases = (
 				3D3921131BF11C23003C7C81 /* Sources */,
 				3D3921141BF11C23003C7C81 /* Frameworks */,
@@ -369,14 +369,14 @@
 			dependencies = (
 				3D3921191BF11C23003C7C81 /* PBXTargetDependency */,
 			);
-			name = PPBlueToothTests;
+			name = ZetronTests;
 			productName = PPBlueToothTests;
-			productReference = 3D3921171BF11C23003C7C81 /* PPBlueToothTests.xctest */;
+			productReference = 3D3921171BF11C23003C7C81 /* Zetron.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3D3921211BF11C23003C7C81 /* PPBlueToothUITests */ = {
+		3D3921211BF11C23003C7C81 /* ZetronUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3D3921311BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "PPBlueToothUITests" */;
+			buildConfigurationList = 3D3921311BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "ZetronUITests" */;
 			buildPhases = (
 				3D39211E1BF11C23003C7C81 /* Sources */,
 				3D39211F1BF11C23003C7C81 /* Frameworks */,
@@ -387,9 +387,9 @@
 			dependencies = (
 				3D3921241BF11C23003C7C81 /* PBXTargetDependency */,
 			);
-			name = PPBlueToothUITests;
+			name = ZetronUITests;
 			productName = PPBlueToothUITests;
-			productReference = 3D3921221BF11C23003C7C81 /* PPBlueToothUITests.xctest */;
+			productReference = 3D3921221BF11C23003C7C81 /* Zetron.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -417,7 +417,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3D3920F91BF11C23003C7C81 /* Build configuration list for PBXProject "PPBlueTooth" */;
+			buildConfigurationList = 3D3920F91BF11C23003C7C81 /* Build configuration list for PBXProject "Zetron" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -430,9 +430,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3D3920FD1BF11C23003C7C81 /* PPBlueTooth */,
-				3D3921161BF11C23003C7C81 /* PPBlueToothTests */,
-				3D3921211BF11C23003C7C81 /* PPBlueToothUITests */,
+				3D3920FD1BF11C23003C7C81 /* Zetron */,
+				3D3921161BF11C23003C7C81 /* ZetronTests */,
+				3D3921211BF11C23003C7C81 /* ZetronUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -563,12 +563,12 @@
 /* Begin PBXTargetDependency section */
 		3D3921191BF11C23003C7C81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3D3920FD1BF11C23003C7C81 /* PPBlueTooth */;
+			target = 3D3920FD1BF11C23003C7C81 /* Zetron */;
 			targetProxy = 3D3921181BF11C23003C7C81 /* PBXContainerItemProxy */;
 		};
 		3D3921241BF11C23003C7C81 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3D3920FD1BF11C23003C7C81 /* PPBlueTooth */;
+			target = 3D3920FD1BF11C23003C7C81 /* Zetron */;
 			targetProxy = 3D3921231BF11C23003C7C81 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -675,7 +675,7 @@
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = natalia.estrell;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Zetron;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -690,7 +690,7 @@
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = natalia.estrell;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Zetron;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -702,8 +702,8 @@
 				INFOPLIST_FILE = PPBlueToothTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = c4q.accesscode.zovfreullia.PPBlueToothTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PPBlueTooth.app/PPBlueTooth";
+				PRODUCT_NAME = Zetron;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zetron.app/Zetron";
 			};
 			name = Debug;
 		};
@@ -714,8 +714,8 @@
 				INFOPLIST_FILE = PPBlueToothTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = c4q.accesscode.zovfreullia.PPBlueToothTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PPBlueTooth.app/PPBlueTooth";
+				PRODUCT_NAME = Zetron;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zetron.app/Zetron";
 			};
 			name = Release;
 		};
@@ -725,7 +725,7 @@
 				INFOPLIST_FILE = PPBlueToothUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = c4q.accesscode.zovfreullia.PPBlueToothUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Zetron;
 				TEST_TARGET_NAME = PPBlueTooth;
 				USES_XCTRUNNER = YES;
 			};
@@ -737,7 +737,7 @@
 				INFOPLIST_FILE = PPBlueToothUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = c4q.accesscode.zovfreullia.PPBlueToothUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Zetron;
 				TEST_TARGET_NAME = PPBlueTooth;
 				USES_XCTRUNNER = YES;
 			};
@@ -746,7 +746,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3D3920F91BF11C23003C7C81 /* Build configuration list for PBXProject "PPBlueTooth" */ = {
+		3D3920F91BF11C23003C7C81 /* Build configuration list for PBXProject "Zetron" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D3921291BF11C23003C7C81 /* Debug */,
@@ -755,7 +755,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3D39212B1BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "PPBlueTooth" */ = {
+		3D39212B1BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "Zetron" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D39212C1BF11C23003C7C81 /* Debug */,
@@ -764,7 +764,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3D39212E1BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "PPBlueToothTests" */ = {
+		3D39212E1BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "ZetronTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D39212F1BF11C23003C7C81 /* Debug */,
@@ -773,7 +773,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3D3921311BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "PPBlueToothUITests" */ = {
+		3D3921311BF11C23003C7C81 /* Build configuration list for PBXNativeTarget "ZetronUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3D3921321BF11C23003C7C81 /* Debug */,

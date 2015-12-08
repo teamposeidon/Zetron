@@ -60,9 +60,10 @@ UITableViewDataSource
     
     [self matchmakingLoad];
     
+    [self.ppMatchmaking joinParty:nil];
     //self.ppMatchmaking.endGameStatus = self.gameEndStatus;
     
-    self.reconnectState = ReconnectStateNone;
+    //self.reconnectState = ReconnectStateNone;
     
     [self animationChangeBGLogo];
     
@@ -79,7 +80,7 @@ UITableViewDataSource
     
     [self createGatherAlert];
     
-    [self fireMessageTimer];
+    //[self fireMessageTimer];
 }
 
 - (void) createGatherAlert {
@@ -91,7 +92,7 @@ UITableViewDataSource
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                     
-                                                              [self sendMessageToPeers];
+                                                              [self fireMessageTimer];
                                                           }];
     
     [alert addAction:defaultAction];
@@ -152,7 +153,7 @@ UITableViewDataSource
     
     if (state == MCSessionStateConnected) {
         NSLog(@"Connected to %@", peer.displayName);
-        [self fireMessageTimer];
+        //[self fireMessageTimer];
         [self makePeerReady:peer];
         [self checkReady];
     }
@@ -166,7 +167,7 @@ UITableViewDataSource
 }
 - (void)fireMessageTimer{
     
-    self.messageTimer = [NSTimer scheduledTimerWithTimeInterval:.1
+    self.messageTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                              target:self
                                                            selector:@selector(sendMessageToPeers)
                                                            userInfo:nil
@@ -190,7 +191,7 @@ UITableViewDataSource
                         withMode:MCSessionSendDataReliable
                            error:&error];
     
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     //NSLog(@"Data Sent: %@",data);
     
 }
