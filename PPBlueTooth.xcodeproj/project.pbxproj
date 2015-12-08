@@ -48,6 +48,8 @@
 		51BC60F31C14ED27007A3163 /* tvstaticR2.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60EF1C14ED27007A3163 /* tvstaticR2.png */; };
 		51BC60F41C14ED27007A3163 /* tvstaticR3.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60F01C14ED27007A3163 /* tvstaticR3.png */; };
 		51BC60F51C14ED27007A3163 /* tvstaticR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BC60F11C14ED27007A3163 /* tvstaticR4.png */; };
+		51CD84FF1C1765C8007C163B /* SilentPartnerCrystals.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51CD84FE1C1765C8007C163B /* SilentPartnerCrystals.mp3 */; };
+		51CD85011C1765EA007C163B /* DeathScene.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51CD85001C1765EA007C163B /* DeathScene.mp3 */; };
 		51FC0E511C100A4D006A387C /* MatchMakingPlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FC0E501C100A4D006A387C /* MatchMakingPlayerCell.m */; };
 		8F1751E746AB70EC6467FBC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44701EE89854B05CA589F1E /* libPods.a */; };
 		9AB6FA7E1C13B11D00250408 /* CustomZetronTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6FA7C1C13B11D00250408 /* CustomZetronTableViewCell.m */; };
@@ -139,6 +141,8 @@
 		51BC60EF1C14ED27007A3163 /* tvstaticR2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR2.png; sourceTree = "<group>"; };
 		51BC60F01C14ED27007A3163 /* tvstaticR3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR3.png; sourceTree = "<group>"; };
 		51BC60F11C14ED27007A3163 /* tvstaticR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tvstaticR4.png; sourceTree = "<group>"; };
+		51CD84FE1C1765C8007C163B /* SilentPartnerCrystals.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SilentPartnerCrystals.mp3; sourceTree = "<group>"; };
+		51CD85001C1765EA007C163B /* DeathScene.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DeathScene.mp3; sourceTree = "<group>"; };
 		51FC0E4F1C100A4D006A387C /* MatchMakingPlayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchMakingPlayerCell.h; sourceTree = "<group>"; };
 		51FC0E501C100A4D006A387C /* MatchMakingPlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchMakingPlayerCell.m; sourceTree = "<group>"; };
 		9AB6FA7B1C13B11D00250408 /* CustomZetronTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomZetronTableViewCell.h; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 		3D3921011BF11C23003C7C81 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				51CD85001C1765EA007C163B /* DeathScene.mp3 */,
+				51CD84FE1C1765C8007C163B /* SilentPartnerCrystals.mp3 */,
 				51AE7FF61C15487D002A8FB7 /* newglitch.wav */,
 				3D1914AD1C0E818900798544 /* stilltime.ttf */,
 				3D2864581BFBE75F00C71A31 /* GlassCandy.mp3 */,
@@ -397,7 +403,7 @@
 				TargetAttributes = {
 					3D3920FD1BF11C23003C7C81 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = N2DCZ2U592;
+						DevelopmentTeam = CFAKT6P3XN;
 					};
 					3D3921161BF11C23003C7C81 = {
 						CreatedOnToolsVersion = 7.1;
@@ -450,8 +456,10 @@
 				3D2864571BFBE5BD00C71A31 /* LazerhawkOverdrive.mp3 in Resources */,
 				3D2864591BFBE75F00C71A31 /* GlassCandy.mp3 in Resources */,
 				3D39210E1BF11C23003C7C81 /* Assets.xcassets in Resources */,
+				51CD85011C1765EA007C163B /* DeathScene.mp3 in Resources */,
 				51BC60F31C14ED27007A3163 /* tvstaticR2.png in Resources */,
 				3D39210C1BF11C23003C7C81 /* Main.storyboard in Resources */,
+				51CD84FF1C1765C8007C163B /* SilentPartnerCrystals.mp3 in Resources */,
 				22BA77FC1C11211F00C04E77 /* PlayerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,7 +674,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danieldistant;
+				PRODUCT_BUNDLE_IDENTIFIER = natalia.estrell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -681,7 +689,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PPBlueTooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danieldistant;
+				PRODUCT_BUNDLE_IDENTIFIER = natalia.estrell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

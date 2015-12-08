@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "CustomZetronTableViewCell.h"
 #import "BrowsePlayersViewController.h"
+#import "AVAudioPlayerPool.h"
 
 typedef NS_ENUM(NSInteger, ReconnectState) {
     ReconnectStateNone,
@@ -67,6 +68,11 @@ UITableViewDataSource
     
     [self setUpDropShadowSideBar];
     
+}
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [[AVAudioPlayerPool sharedInstance] setPlayerStates:AudioPlayerStatePostGame];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {

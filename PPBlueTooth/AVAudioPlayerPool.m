@@ -18,6 +18,7 @@
 @property (nonatomic) AVAudioPlayer *gamePlayAudio;
 @property (nonatomic) AVAudioPlayer *warningAudio;
 @property (nonatomic) AVAudioPlayer *transitionAudio;
+@property (nonatomic) AVAudioPlayer *endGameAudio;
 
 @end
 
@@ -70,7 +71,7 @@
 //Begins intro audio
 -(void)playIntroAudio{
     if (self.introAudio == nil) {
-        NSURL* url = [[NSBundle mainBundle] URLForResource:@"GlassCandy"
+        NSURL* url = [[NSBundle mainBundle] URLForResource:@"SilentPartnerCrystals"
                                              withExtension:@"mp3"];
         self.introAudio = [[AVAudioPlayerPool sharedInstance] playerWithURL:url];
     }
@@ -81,6 +82,23 @@
 //Stops song warning user of nearby virus
 -(void)stopIntroAudio {
     [self.introAudio stop];
+}
+//
+//EndGameAudio
+//Begins end game audio
+-(void)playEndGameAudio{
+    if (self.endGameAudio == nil) {
+        NSURL* url = [[NSBundle mainBundle] URLForResource:@"DeathScene"
+                                             withExtension:@"mp3"];
+        self.endGameAudio = [[AVAudioPlayerPool sharedInstance] playerWithURL:url];
+    }
+    
+    [self.endGameAudio play];
+}
+
+//Stops song warning user of nearby virus
+-(void)stopEndGameAudio {
+    [self.endGameAudio stop];
 }
 
 //
@@ -122,7 +140,7 @@
 
     [self.transitionAudio play];
 
-    self.transitionAudio.numberOfLoops = 1;
+    self.transitionAudio.numberOfLoops = .5;
     self.transitionAudio.delegate = self;
     
     [self lowersGamePlayAudio];
@@ -167,21 +185,30 @@
             [self playIntroAudio];
             [self stopGamePlayAudio];
             [self stopWarningAudio];
+            [self stopEndGameAudio];
             break;
             
         case AudioPlayerStateViral:
-        case AudioPlayerStatePostGame:
         case AudioPlayerStateHealthy:
             [self playGamePlayAudio];
             [self stopIntroAudio];
             [self stopWarningAudio];
+            [self stopEndGameAudio];
             break;
             
         case AudioPlayerStateClosePoximity:
             [self playWarningAudio];
             [self stopIntroAudio];
+            [self stopEndGameAudio];
             break;
-
+         
+        case AudioPlayerStatePostGame:
+            [self stopGamePlayAudio];
+            [self stopIntroAudio];
+            [self stopWarningAudio];
+            [self playEndGameAudio];
+            break;
+            
         default:
             break;
     }
