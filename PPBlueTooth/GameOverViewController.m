@@ -9,6 +9,7 @@
 #import "GameOverViewController.h"
 #import "AppDelegate.h"
 #import "CustomZetronTableViewCell.h"
+#import "BrowsePlayersViewController.h"
 
 typedef NS_ENUM(NSInteger, ReconnectState) {
     ReconnectStateNone,
@@ -51,6 +52,7 @@ UITableViewDataSource
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.backgroundColor = [UIColor clearColor];
     
     self.allConnectedPeers = [[NSMutableDictionary alloc]init];
     self.readyPlayers = [[NSMutableDictionary alloc]init];
@@ -69,7 +71,7 @@ UITableViewDataSource
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    //[self createGatherAlert];
+    [self createGatherAlert];
     
     [self fireMessageTimer];
 }
@@ -181,7 +183,6 @@ UITableViewDataSource
                          toPeers:self.ppMatchmaking.connectedPeers
                         withMode:MCSessionSendDataReliable
                            error:&error];
-    NSLog(@"Fire");
     
     [self.tableView reloadData];
     //NSLog(@"Data Sent: %@",data);
@@ -279,6 +280,13 @@ UITableViewDataSource
     }
     
     return cell;
+}
+
+- (IBAction)playAgainButtonTapped:(id)sender {
+    
+    UIStoryboard *storyboard = self.storyboard;
+    BrowsePlayersViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"BrowserPlayersID"];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 
